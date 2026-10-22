@@ -170,11 +170,15 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.listen(PORT, () => {
-  console.log('========================================================');
-  console.log(`🚀 SITE DA CG INFO NO AR COM SUCESSO!`);
-  console.log(`🌐 Endereço do Site: http://localhost:${PORT}`);
-  console.log(`🔗 Integração com Programa de OS: ${REPARO_PRO_URL}`);
-  console.log(`📁 Banco Local db.json: ${fs.existsSync(DB_JSON_PATH) ? 'Encontrado e Conectado' : 'Aguardando'}`);
-  console.log('========================================================');
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log('========================================================');
+    console.log(`🚀 SITE DA CG INFO NO AR COM SUCESSO!`);
+    console.log(`🌐 Endereço do Site: http://localhost:${PORT}`);
+    console.log(`🔗 Integração com Programa de OS: ${REPARO_PRO_URL}`);
+    console.log(`📁 Banco Local db.json: ${fs.existsSync(DB_JSON_PATH) ? 'Encontrado e Conectado' : 'Aguardando'}`);
+    console.log('========================================================');
+  });
+}
+
+module.exports = app;
