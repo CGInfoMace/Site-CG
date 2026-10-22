@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CG Info - Assistência Técnica Especializada em Informática & Consulta de OS Online</title>
+  <meta name="description" content="Assistência Técnica Especializada em Macaé e Região. Manutenção de computadores, notebooks, PCs Gamer, reparo de placas-mãe, limpeza térmica e consulta de Ordem de Serviço em tempo real.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2306b6d4'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-cyan-500 selection:text-slate-950">
+
+  <!-- ======================================================== -->
+  <!-- BARRA DE NAVEGAÇÃO SUPERIOR (HEADER)                     -->
+  <!-- ======================================================== -->
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-nav">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo da CG Info -->
+      <a href="#inicio" class="flex items-center gap-3.5 group">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-blue-600 via-cyan-500 to-emerald-400 p-[2px] shadow-lg shadow-cyan-500/25 group-hover:scale-105 transition-transform duration-300">
+          <div class="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center font-black text-cyan-400 text-lg">
+            CG
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-extrabold text-xl tracking-tight text-white group-hover:text-cyan-400 transition-colors">CG INFO</span>
+            <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">Tech</span>
+          </div>
+          <span class="text-[11px] text-slate-400 block font-medium">Assistência Técnica Especializada</span>
+        </div>
+      </a>
+
+      <!-- Menu Desktop -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-300">
+        <a href="#inicio" class="hover:text-cyan-400 transition-colors">Início</a>
+        <a href="#servicos" class="hover:text-cyan-400 transition-colors">Serviços</a>
+        <a href="#bancada" class="hover:text-cyan-400 transition-colors">Nossa Bancada</a>
+        <a href="#rastreio" class="hover:text-cyan-400 transition-colors flex items-center gap-1.5 text-cyan-400 font-bold">
+          <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+          Consultar OS
+        </a>
+        <a href="#diferenciais" class="hover:text-cyan-400 transition-colors">Diferenciais</a>
+        <a href="#faq" class="hover:text-cyan-400 transition-colors">Dúvidas</a>
+        <a href="#contato" class="hover:text-cyan-400 transition-colors">Contato</a>
+      </nav>
+
+      <!-- Ações do Header -->
+      <div class="hidden lg:flex items-center gap-4">
+        <div id="os-system-status" class="flex items-center text-xs py-1.5 px-3 rounded-full bg-slate-900 border border-slate-800">
+          <span class="w-2 h-2 rounded-full bg-cyan-400 mr-1.5"></span>
+          <span class="text-cyan-400 font-semibold">Portal de OS Ativo</span>
+        </div>
+
+        <a href="https://wa.me/5522999352646" target="_blank" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs shadow-lg shadow-cyan-500/25 transition-all duration-300 flex items-center gap-2">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.861.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+          <span>Falar no WhatsApp</span>
+        </a>
+      </div>
+
+      <!-- Botão Menu Mobile -->
+      <button id="btn-mobile-menu" class="md:hidden p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+
+    <!-- Menu Dropdown Mobile -->
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 px-6 py-5 space-y-4 text-sm font-semibold">
+      <a href="#inicio" class="block text-slate-300 hover:text-cyan-400">Início</a>
+      <a href="#servicos" class="block text-slate-300 hover:text-cyan-400">Serviços Especializados</a>
+      <a href="#bancada" class="block text-slate-300 hover:text-cyan-400">Nossa Bancada Técnica</a>
+      <a href="#rastreio" class="block text-cyan-400 font-bold flex items-center justify-between">
+        <span>Acompanhar Ordem de Serviço</span>
+        <span class="text-xs px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-400">Online</span>
+      </a>
+      <a href="#diferenciais" class="block text-slate-300 hover:text-cyan-400">Diferenciais</a>
+      <a href="#faq" class="block text-slate-300 hover:text-cyan-400">Dúvidas Frequentes</a>
+      <a href="#contato" class="block text-slate-300 hover:text-cyan-400">Fale Conosco</a>
+      <div class="pt-2 border-t border-slate-800">
+        <a href="https://wa.me/5522999352646" target="_blank" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold flex items-center justify-center gap-2">
+          <span>Chamar no WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================================== -->
+  <!-- SEÇÃO HERO COM CONSULTA RÁPIDA DE OS INTEGRADA           -->
+  <!-- ======================================================== -->
+  <section id="inicio" class="relative pt-36 pb-20 sm:pt-44 sm:pb-32 overflow-hidden bg-radial-gradient">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Texto Principal do Hero -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-semibold animate-pulse-subtle">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+            Assistência Técnica Especializada em Informática & Redes
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] text-white">
+            Seu computador e notebook em mãos de <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-emerald-400">quem entende de verdade</span>.
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-300 font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            Diagnóstico preciso em bancada eletrônica, montagem gamer profissional, reparo de placas-mãe, limpeza térmica e <strong>acompanhamento em tempo real do seu reparo pela internet</strong>.
+          </p>
+
+          <!-- Ações Primárias -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+            <a href="https://wa.me/5522999352646" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-extrabold text-sm sm:text-base shadow-xl shadow-cyan-500/25 transition-all duration-300 flex items-center justify-center gap-3">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.861.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+              <span>Solicitar Orçamento Grátis</span>
+            </a>
+            
+            <a href="#servicos" class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-slate-900 hover:bg-slate-800 text-slate-300 font-bold text-sm sm:text-base border border-slate-800 transition flex items-center justify-center gap-2">
+              <span>Nossos Serviços</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </a>
+          </div>
+
+          <!-- Métricas de Confiança -->
+          <div class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-800/80 max-w-lg mx-auto lg:mx-0">
+            <div>
+              <span class="block text-2xl sm:text-3xl font-black text-cyan-400 font-mono">+2.500</span>
+              <span class="text-xs text-slate-400">Reparos Concluídos</span>
+            </div>
+            <div>
+              <span class="block text-2xl sm:text-3xl font-black text-emerald-400 font-mono">90 Dias</span>
+              <span class="text-xs text-slate-400">Garantia em Serviços</span>
+            </div>
+            <div>
+              <span class="block text-2xl sm:text-3xl font-black text-blue-400 font-mono">100%</span>
+              <span class="text-xs text-slate-400">Transparência e Laudo</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card de Rastreamento Imediato de OS (Destaque Principal) -->
+        <div class="lg:col-span-5">
+          <div class="relative">
+            <!-- Efeito de Brilho de Fundo -->
+            <div class="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-blue-600 to-emerald-500 rounded-3xl blur-xl opacity-30 animate-pulse-subtle"></div>
+            
+            <div class="relative glass-card p-6 sm:p-8 rounded-3xl border border-cyan-500/30 shadow-2xl space-y-6">
+              
+              <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+                  </div>
+                  <div>
+                    <h3 class="text-base font-bold text-white">Acompanhe seu Reparo</h3>
+                    <p class="text-xs text-slate-400">Vínculo Direto com o Programa Reparo Pro</p>
+                  </div>
+                </div>
+                <span class="text-[10px] uppercase font-bold px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                  Ao Vivo
+                </span>
+              </div>
+
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Já deixou seu equipamento conosco? Digite o <strong>número da OS</strong> ou <strong>código do comprovante</strong> para ver o status, diagnóstico técnico e previsão de entrega em tempo real:
+              </p>
+
+              <!-- Formulário de Busca Hero -->
+              <form id="form-busca-hero" class="space-y-3">
+                <div class="relative">
+                  <input 
+                    type="text" 
+                    id="input-busca-hero" 
+                    placeholder="Ex: 538 ou 83AIWF538" 
+                    class="w-full pl-11 pr-4 py-3.5 bg-slate-950/90 border border-slate-700/80 rounded-2xl text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 font-mono transition"
+                    required
+                  >
+                  <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                  </div>
+                </div>
+
+                <button 
+                  type="submit" 
+                  class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-black text-sm transition-all duration-300 shadow-lg shadow-cyan-500/25 flex items-center justify-center gap-2"
+                >
+                  <span>Consultar Minha OS</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </button>
+              </form>
+
+              <!-- Testes Rápidos -->
+              <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400">
+                <span>Clique para testar:</span>
+                <div class="flex items-center gap-2">
+                  <button onclick="document.getElementById('input-busca-hero').value='538'; consultarOs('538');" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-cyan-400 font-mono font-bold transition">
+                    OS #538
+                  </button>
+                  <button onclick="document.getElementById('input-busca-hero').value='1005'; consultarOs('1005');" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-cyan-400 font-mono font-bold transition">
+                    OS #1005
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SEÇÃO DE SERVIÇOS ESPECIALIZADOS (DIVULGAÇÃO DO TRABALHO) -->
+  <!-- ======================================================== -->
+  <section id="servicos" class="py-24 relative bg-slate-900/40 border-t border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+        <span class="text-xs uppercase font-extrabold tracking-widest text-cyan-400 bg-cyan-950/60 px-3.5 py-1 rounded-full border border-cyan-800/40">
+          Excelência em Cada Detalhe
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+          Nossos Serviços Especializados
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base">
+          Trabalhamos com os melhores equipamentos e ferramentas do mercado para diagnosticar e resolver o problema do seu equipamento de forma definitiva.
+        </p>
+      </div>
+
+      <!-- Grade dos 6 Principais Serviços -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Card 1: Reparo Avançado em Placas (Eletrônica) -->
+        <div class="glass-card p-7 rounded-3xl space-y-4 group transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center text-2xl group-hover:scale-110 group-hover:bg-cyan-500 group-hover:text-slate-950 transition-all duration-300">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+          </div>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-cyan-400 bg-cyan-950/50 px-2.5 py-0.5 rounded border border-cyan-800/40">Microsolda & SMD</span>
+          <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">Reparo em Placas-Mãe</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Reparo em nível de componente eletrônico: eliminação de curtos nas linhas de 19V, 3V, 5V e VCore, regravação e limpeza de BIOS/Clear ME, troca de Super I/O e CIs de carga.
+          </p>
+          <ul class="text-xs text-slate-300 space-y-1.5 pt-2 border-t border-slate-800">
+            <li class="flex items-center gap-2"><span class="text-cyan-400 font-bold">✓</span> Não liga ou desliga sozinho</li>
+            <li class="flex items-center gap-2"><span class="text-cyan-400 font-bold">✓</span> Sem vídeo com luz acesa</li>
+            <li class="flex items-center gap-2"><span class="text-cyan-400 font-bold">✓</span> Recuperação de trilhas rompidas</li>
+          </ul>
+        </div>
+
+        <!-- Card 2: Manutenção e Reparo de Notebooks -->
+        <div class="glass-card p-7 rounded-3xl space-y-4 group transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center text-2xl group-hover:scale-110 group-hover:bg-blue-500 group-hover:text-slate-950 transition-all duration-300">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-blue-400 bg-blue-950/50 px-2.5 py-0.5 rounded border border-blue-800/40">Todas as Marcas</span>
+          <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Conserto de Notebooks</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Troca de telas quebradas (LED, IPS, 144Hz), reconstrução estrutural de carcaças e dobradiças danificadas, troca de teclados, baterias originais e conectores jack de carga.
+          </p>
+          <ul class="text-xs text-slate-300 space-y-1.5 pt-2 border-t border-slate-800">
+            <li class="flex items-center gap-2"><span class="text-blue-400 font-bold">✓</span> Dell, Lenovo, Acer, Asus, HP, Apple</li>
+            <li class="flex items-center gap-2"><span class="text-blue-400 font-bold">✓</span> Reconstrução de dobradiças</li>
+            <li class="flex items-center gap-2"><span class="text-blue-400 font-bold">✓</span> Troca de conector que não carrega</li>
+          </ul>
+        </div>
+
+        <!-- Card 3: PCs Gamer e Workstations -->
+        <div class="glass-card p-7 rounded-3xl space-y-4 group transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center text-2xl group-hover:scale-110 group-hover:bg-purple-500 group-hover:text-slate-950 transition-all duration-300">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-purple-400 bg-purple-950/50 px-2.5 py-0.5 rounded border border-purple-800/40">Alta Performance</span>
+          <h3 class="text-xl font-bold text-white group-hover:text-purple-400 transition-colors">PCs Gamer & Workstations</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Montagem personalizada de computadores gamer, cable management profissional para máxima refrigeração, upgrades de placas de vídeo (RTX / RX), processadores e memórias RAM.
+          </p>
+          <ul class="text-xs text-slate-300 space-y-1.5 pt-2 border-t border-slate-800">
+            <li class="flex items-center gap-2"><span class="text-purple-400 font-bold">✓</span> Montagem do zero com peças escolhidas</li>
+            <li class="flex items-center gap-2"><span class="text-purple-400 font-bold">✓</span> Testes de estresse e benchmark 3D</li>
+            <li class="flex items-center gap-2"><span class="text-purple-400 font-bold">✓</span> Solução para telas azuis e travamentos</li>
+          </ul>
+        </div>
+
+        <!-- Card 4: Limpeza Térmica Profunda -->
+        <div class="glass-card p-7 rounded-3xl space-y-4 group transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-slate-950 transition-all duration-300">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          </div>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-400 bg-emerald-950/50 px-2.5 py-0.5 rounded border border-emerald-800/40">Prevenção Vital</span>
+          <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">Limpeza Térmica & Manutenção</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Desmontagem total para desobstrução de coolers e dissipadores, substituição de thermal pads ressecados e aplicação de pasta térmica de alta condutividade (Thermal Grizzly / Noctua).
+          </p>
+          <ul class="text-xs text-slate-300 space-y-1.5 pt-2 border-t border-slate-800">
+            <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">✓</span> Redução de até 25°C na temperatura</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">✓</span> Fim do barulho excessivo de ventoinha</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">✓</span> Aumento da vida útil do processador/GPU</li>
+          </ul>
+        </div>
+
+        <!-- Card 5: Formatação, Otimização & Recuperação de Dados -->
+        <div class="glass-card p-7 rounded-3xl space-y-4 group transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center text-2xl group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-slate-950 transition-all duration-300">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7c0-2-1-3-3-3H7C5 4 4 5 4 7zm0 4h16M9 16h6"/></svg>
+          </div>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-amber-400 bg-amber-950/50 px-2.5 py-0.5 rounded border border-amber-800/40">Velocidade & Segurança</span>
+          <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">Formatação & Recuperação</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Instalação limpa de Windows 11/10 Pro com drivers oficiais e sem lentidão, remoção de vírus/malwares, backup seguro de fotos/documentos e recuperação de dados em discos com defeito.
+          </p>
+          <ul class="text-xs text-slate-300 space-y-1.5 pt-2 border-t border-slate-800">
+            <li class="flex items-center gap-2"><span class="text-amber-400 font-bold">✓</span> Upgrade de SSD NVMe (até 10x mais rápido)</li>
+            <li class="flex items-center gap-2"><span class="text-amber-400 font-bold">✓</span> Backup seguro antes de qualquer ação</li>
+            <li class="flex items-center gap-2"><span class="text-amber-400 font-bold">✓</span> Pacote Office e navegadores configurados</li>
+          </ul>
+        </div>
+
+        <!-- Card 6: Redes, CFTV e Segurança -->
+        <div class="glass-card p-7 rounded-3xl space-y-4 group transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-400 flex items-center justify-center text-2xl group-hover:scale-110 group-hover:bg-rose-500 group-hover:text-slate-950 transition-all duration-300">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+          </div>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-rose-400 bg-rose-950/50 px-2.5 py-0.5 rounded border border-rose-800/40">Infraestrutura</span>
+          <h3 class="text-xl font-bold text-white group-hover:text-rose-400 transition-colors">Redes, CFTV & Facial</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Instalação e configuração de câmeras de segurança CFTV IP/HD, sistemas de reconhecimento facial, cabeamento estruturado e redes Wi-Fi Mesh corporativas para comércios e residências.
+          </p>
+          <ul class="text-xs text-slate-300 space-y-1.5 pt-2 border-t border-slate-800">
+            <li class="flex items-center gap-2"><span class="text-rose-400 font-bold">✓</span> Acesso às câmeras no celular pelo app</li>
+            <li class="flex items-center gap-2"><span class="text-rose-400 font-bold">✓</span> Controle de acesso facial e biometria</li>
+            <li class="flex items-center gap-2"><span class="text-rose-400 font-bold">✓</span> Roteadores e switches configurados</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Banner de Chamada para Orçamento -->
+      <div class="mt-16 p-8 rounded-3xl bg-gradient-to-r from-blue-950/60 via-slate-900 to-cyan-950/60 border border-cyan-500/30 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
+        <div class="space-y-1 text-center sm:text-left">
+          <h4 class="text-lg sm:text-xl font-bold text-white">Precisa de um diagnóstico para seu equipamento?</h4>
+          <p class="text-xs sm:text-sm text-slate-400">Traga seu aparelho até nossa bancada ou tire dúvidas diretamente com o técnico pelo WhatsApp.</p>
+        </div>
+        <a href="https://wa.me/5522999352646" target="_blank" class="px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm transition flex items-center gap-2 flex-shrink-0 shadow-lg shadow-emerald-900/30">
+          <span>Conversar no WhatsApp</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SEÇÃO POR DENTRO DA BANCADA TÉCNICA                      -->
+  <!-- ======================================================== -->
+  <section id="bancada" class="py-24 relative overflow-hidden bg-radial-glow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-6 space-y-6">
+          <span class="text-xs uppercase font-extrabold tracking-widest text-emerald-400 bg-emerald-950/60 px-3.5 py-1 rounded-full border border-emerald-800/40">
+            Tecnologia de Ponta
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+            Por Dentro da Bancada Técnica da CG Info
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+            Aqui na <strong>CG Info</strong>, não trabalhamos no "achismo". Nossa bancada é equipada com instrumentação de precisão para identificar com exatidão a causa raiz de qualquer falha eletrônica.
+          </p>
+
+          <div class="space-y-4 pt-2">
+            <div class="flex items-start gap-3.5">
+              <div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                ⚡
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white">Fonte de Bancada Ajustável & Proteção ESD</h4>
+                <p class="text-xs text-slate-400 mt-0.5">Testes controlados de corrente para localização precisa de componentes em curto térmico sem danificar a placa.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3.5">
+              <div class="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/30 text-blue-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                🔬
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white">Microscópio Óptico para Inspeção SMD</h4>
+                <p class="text-xs text-slate-400 mt-0.5">Análise minuciosa de soldas frias, trilhas oxidadas e micro-componentes invisíveis a olho nu.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3.5">
+              <div class="w-8 h-8 rounded-lg bg-purple-500/10 border border-purple-500/30 text-purple-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                💾
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white">Gravadores Profissionais de BIOS (EPROM / SPI)</h4>
+                <p class="text-xs text-slate-400 mt-0.5">Regravação direta de chips de BIOS para reviver placas corrompidas por quedas de energia ou updates mal sucedidos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Galeria / Destaques da Bancada -->
+        <div class="lg:col-span-6">
+          <div class="grid grid-cols-2 gap-4">
+            
+            <div class="glass-card p-4 rounded-2xl border border-slate-800 space-y-3">
+              <div class="h-40 rounded-xl bg-slate-900 border border-slate-800 overflow-hidden relative flex items-center justify-center">
+                <img src="/assets/images/WhatsApp Image 2026-04-28 at 11.08.17.jpeg" alt="Bancada CG Info" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" onerror="this.src='/assets/images/WhatsApp Image 2026-04-28 at 11.06.28.jpeg'">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+                <span class="absolute bottom-2 left-2 text-[10px] font-bold text-white px-2 py-0.5 rounded bg-slate-950/80 border border-white/10">Bancada Profissional</span>
+              </div>
+              <h4 class="text-xs font-bold text-white">Inspeção Detalhada</h4>
+              <p class="text-[11px] text-slate-400">Cada placa passa por verificação estrutural e testes de tensão nas bobinas principais.</p>
+            </div>
+
+            <div class="glass-card p-4 rounded-2xl border border-slate-800 space-y-3 mt-6">
+              <div class="h-40 rounded-xl bg-slate-900 border border-slate-800 overflow-hidden relative flex items-center justify-center">
+                <img src="/assets/images/WhatsApp Image 2026-04-28 at 14.43.16.jpeg" alt="Reparo de Hardware" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" onerror="this.src='/assets/images/WhatsApp Image 2026-04-28 at 14.46.15.jpeg'">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+                <span class="absolute bottom-2 left-2 text-[10px] font-bold text-white px-2 py-0.5 rounded bg-slate-950/80 border border-white/10">Peças com Procedência</span>
+              </div>
+              <h4 class="text-xs font-bold text-white">Componentes Originais</h4>
+              <p class="text-[11px] text-slate-400">Trabalhamos com marcas homologadas para garantir estabilidade e durabilidade.</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SEÇÃO DEDICADA DE RASTREAMENTO DE ORDEM DE SERVIÇO        -->
+  <!-- ======================================================== -->
+  <section id="rastreio" class="py-24 relative bg-slate-900/60 border-t border-b border-slate-800">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto space-y-4 mb-12">
+        <span class="text-xs uppercase font-extrabold tracking-widest text-cyan-400 bg-cyan-950/60 px-3.5 py-1 rounded-full border border-cyan-800/40">
+          Transparência Total
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+          Acompanhe seu Reparo em Tempo Real
+        </h2>
+        <p class="text-slate-400 text-sm">
+          Sem precisar ligar ou esperar: consulte o andamento exato do seu computador ou notebook direto do banco de dados do nosso software técnico.
+        </p>
+      </div>
+
+      <!-- Caixa Central de Busca -->
+      <div class="glass-card p-6 sm:p-10 rounded-3xl border border-cyan-500/30 shadow-2xl space-y-6">
+        
+        <form id="form-busca-secao" class="flex flex-col sm:flex-row gap-3">
+          <div class="relative flex-1">
+            <input 
+              type="text" 
+              id="input-busca-secao" 
+              placeholder="Digite o número da OS ou código de rastreio (ex: 538)" 
+              class="w-full pl-12 pr-4 py-4 bg-slate-950 border border-slate-700 rounded-2xl text-base text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 font-mono transition"
+              required
+            >
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            </div>
+          </div>
+          
+          <button 
+            type="submit" 
+            class="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-black text-base rounded-2xl transition shadow-lg shadow-cyan-500/25 flex items-center justify-center gap-2 flex-shrink-0"
+          >
+            <span>Buscar Status da OS</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </button>
+        </form>
+
+        <!-- Etapas Explicativas da Consulta -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-slate-800 text-xs">
+          <div class="flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold flex-shrink-0 mt-0.5">1</span>
+            <p class="text-slate-400">Pegue o comprovante de recebimento emitido na entrega do seu equipamento.</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold flex-shrink-0 mt-0.5">2</span>
+            <p class="text-slate-400">Digite o número da OS ou aponte a câmera do celular para o QR Code impresso.</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold flex-shrink-0 mt-0.5">3</span>
+            <p class="text-slate-400">Veja o laudo técnico, aprove orçamentos e saiba a hora exata da retirada!</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SEÇÃO PASSO A PASSO (COMO FUNCIONA O ATENDIMENTO)        -->
+  <!-- ======================================================== -->
+  <section id="diferenciais" class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+        <span class="text-xs uppercase font-extrabold tracking-widest text-blue-400 bg-blue-950/60 px-3.5 py-1 rounded-full border border-blue-800/40">
+          Processo Transparente
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+          Como Funciona o Atendimento na CG Info
+        </h2>
+        <p class="text-slate-400 text-sm">
+          Sem surpresas no valor final e com comunicação clara em cada etapa do reparo.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-3 relative">
+          <span class="text-4xl font-black text-slate-800 font-mono">01</span>
+          <h3 class="text-base font-bold text-white">Entrada & Abertura de OS</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Seu equipamento é cadastrado no sistema Reparo Pro com conferência de acessórios e emissão de comprovante com número de rastreio.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-3 relative">
+          <span class="text-4xl font-black text-slate-800 font-mono">02</span>
+          <h3 class="text-base font-bold text-white">Diagnóstico em Bancada</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Testamos componentes, tensões de alimentação e integridade física para identificar com exatidão o defeito relatado.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-3 relative">
+          <span class="text-4xl font-black text-slate-800 font-mono">03</span>
+          <h3 class="text-base font-bold text-white">Orçamento Claro & Sem Pegadinhas</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Você recebe o laudo detalhado e os valores de peças e mão de obra pelo site e WhatsApp para aprovação antes de qualquer reparo.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-3 relative">
+          <span class="text-4xl font-black text-slate-800 font-mono">04</span>
+          <h3 class="text-base font-bold text-white">Testes Finais & Garantia</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Após a execução, submetemos a máquina a testes rigorosos de estresse térmico e funcional antes de liberar com termo de garantia de 90 dias.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SEÇÃO DE DEPOIMENTOS DE CLIENTES                         -->
+  <!-- ======================================================== -->
+  <section class="py-20 bg-slate-900/30 border-t border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto space-y-3 mb-12">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+          O Que Nossos Clientes Dizem
+        </h2>
+        <p class="text-slate-400 text-xs sm:text-sm">
+          A confiança e satisfação de quem já recuperou seus equipamentos na CG Info.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-3">
+          <div class="flex text-amber-400 text-sm">★★★★★</div>
+          <p class="text-xs text-slate-300 italic leading-relaxed">
+            "Levei meu notebook Dell que outra assistência disse que tinha condenado a placa-mãe. Na CG Info o Carlos fez o diagnóstico e era apenas um curto na linha de entrada. Economizei muito e o notebook ficou zero!"
+          </p>
+          <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+            <span class="font-bold text-white">Rodrigo M.</span>
+            <span class="text-slate-500">Macaé / RJ</span>
+          </div>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-3">
+          <div class="flex text-amber-400 text-sm">★★★★★</div>
+          <p class="text-xs text-slate-300 italic leading-relaxed">
+            "Excelente atendimento! Montaram meu PC Gamer com um cable management impecável. O melhor de tudo é que pude acompanhar o status da OS pelo site do início ao fim."
+          </p>
+          <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+            <span class="font-bold text-white">Matheus Vieira</span>
+            <span class="text-slate-500">Rio das Ostras / RJ</span>
+          </div>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-3">
+          <div class="flex text-amber-400 text-sm">★★★★★</div>
+          <p class="text-xs text-slate-300 italic leading-relaxed">
+            "Limpeza térmica e troca de pasta térmica impecável no meu notebook que estava desligando em jogos pesados. A temperatura caiu quase 20 graus. Super recomendo a CG Info!"
+          </p>
+          <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+            <span class="font-bold text-white">Juliana Santos</span>
+            <span class="text-slate-500">Macaé / RJ</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SEÇÃO DE PERGUNTAS FREQUENTES (FAQ)                      -->
+  <!-- ======================================================== -->
+  <section id="faq" class="py-24 relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      
+      <div class="text-center space-y-3">
+        <span class="text-xs uppercase font-extrabold tracking-widest text-cyan-400 bg-cyan-950/60 px-3.5 py-1 rounded-full border border-cyan-800/40">
+          Tire Suas Dúvidas
+        </span>
+        <h2 class="text-3xl font-extrabold text-white">Perguntas Frequentes</h2>
+      </div>
+
+      <div class="space-y-3">
+        
+        <div class="faq-item glass-card rounded-2xl border border-slate-800 overflow-hidden">
+          <button class="faq-button w-full px-6 py-4 text-left flex items-center justify-between text-sm font-bold text-white hover:text-cyan-400 transition">
+            <span>Quanto tempo demora para fazer o diagnóstico do equipamento?</span>
+            <svg class="faq-icon w-4 h-4 text-slate-400 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-xs text-slate-400 leading-relaxed border-t border-slate-800/60 pt-3">
+            O diagnóstico inicial em bancada geralmente leva entre 24 e 48 horas úteis, dependendo da complexidade do defeito (como falhas intermitentes em placas-mãe). Assim que o laudo estiver pronto, a OS é atualizada e você recebe a notificação no WhatsApp!
+          </div>
+        </div>
+
+        <div class="faq-item glass-card rounded-2xl border border-slate-800 overflow-hidden">
+          <button class="faq-button w-full px-6 py-4 text-left flex items-center justify-between text-sm font-bold text-white hover:text-cyan-400 transition">
+            <span>Como funciona a garantia dos serviços executados?</span>
+            <svg class="faq-icon w-4 h-4 text-slate-400 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-xs text-slate-400 leading-relaxed border-t border-slate-800/60 pt-3">
+            Todos os nossos serviços e peças substituídas contam com a garantia legal de 90 (noventa) dias conforme o Código de Defesa do Consumidor, com emissão do termo de garantia discriminando cada item.
+          </div>
+        </div>
+
+        <div class="faq-item glass-card rounded-2xl border border-slate-800 overflow-hidden">
+          <button class="faq-button w-full px-6 py-4 text-left flex items-center justify-between text-sm font-bold text-white hover:text-cyan-400 transition">
+            <span>Preciso deixar a senha do Windows ao entregar o computador?</span>
+            <svg class="faq-icon w-4 h-4 text-slate-400 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-xs text-slate-400 leading-relaxed border-t border-slate-800/60 pt-3">
+            A senha é solicitada apenas quando precisamos testar o funcionamento de áudio, rede Wi-Fi, teclado, touchpad e estresse gráfico dentro do sistema. Se preferir não fornecer por privacidade, realizamos os testes através de um sistema portátil Linux/WinPE independente do seu disco!
+          </div>
+        </div>
+
+        <div class="faq-item glass-card rounded-2xl border border-slate-800 overflow-hidden">
+          <button class="faq-button w-full px-6 py-4 text-left flex items-center justify-between text-sm font-bold text-white hover:text-cyan-400 transition">
+            <span>Quais são as formas de pagamento aceitas?</span>
+            <svg class="faq-icon w-4 h-4 text-slate-400 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-xs text-slate-400 leading-relaxed border-t border-slate-800/60 pt-3">
+            Aceitamos Pix (com QR Code gerado diretamente no portal de OS ou impresso no comprovante), cartões de débito, crédito (com parcelamento facilitado) e dinheiro à vista.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SEÇÃO DE CONTATO, LOCALIZAÇÃO E ORÇAMENTO RÁPIDO         -->
+  <!-- ======================================================== -->
+  <section id="contato" class="py-24 relative bg-slate-900/50 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Informações de Contato -->
+        <div class="lg:col-span-5 space-y-6">
+          <span class="text-xs uppercase font-extrabold tracking-widest text-cyan-400 bg-cyan-950/60 px-3.5 py-1 rounded-full border border-cyan-800/40">
+            Fale com a Gente
+          </span>
+          <h2 class="text-3xl font-extrabold text-white">Entre em Contato</h2>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Estamos prontos para atender você com agilidade e tirar todas as suas dúvidas sobre o reparo do seu computador ou rede.
+          </p>
+
+          <div class="space-y-4 pt-2 text-xs">
+            <div class="flex items-center gap-3.5 p-3.5 rounded-xl bg-slate-900 border border-slate-800">
+              <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.861.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+              </div>
+              <div>
+                <span class="text-slate-400 block">WhatsApp Direto:</span>
+                <a href="https://wa.me/5522999352646" target="_blank" class="font-bold text-white hover:text-emerald-400 transition text-sm">
+                  (22) 99935-2646
+                </a>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3.5 p-3.5 rounded-xl bg-slate-900 border border-slate-800">
+              <div class="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <span class="text-slate-400 block">Horário de Funcionamento:</span>
+                <span class="font-semibold text-white">Segunda a Sexta: 09:00 às 12:30 das 14:00 às 18:30</span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3.5 p-3.5 rounded-xl bg-slate-900 border border-slate-800">
+              <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <div class="space-y-1">
+                <span class="text-slate-400 block">Endereço:</span>
+                <span class="font-semibold text-white leading-relaxed block">
+                  Av. Otoniel Gomes Tavares, 1287 - Condomínio Mar da Irlanda<br>
+                  <span class="text-slate-300">Bloco 6 Apt 110 - São José do Barreto - Macaé / RJ</span>
+                </span>
+                <a href="https://www.google.com/maps/search/?api=1&query=Av.+Otoniel+Gomes+Tavares,+1287+-+Condom%C3%ADnio+Mar+da+Irlanda,+S%C3%A3o+Jos%C3%A9+do+Barreto,+Maca%C3%A9+-+RJ" target="_blank" class="inline-flex items-center gap-1.5 text-[11px] font-bold text-cyan-400 hover:text-cyan-300 transition pt-1">
+                  <span>📍 Ver no Google Maps / Traçar Rota</span>
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulário Rápido de Pré-Orçamento via WhatsApp -->
+        <div class="lg:col-span-7">
+          <div class="glass-card p-7 sm:p-8 rounded-3xl border border-slate-800 shadow-xl space-y-5">
+            <div class="border-b border-slate-800 pb-4">
+              <h3 class="text-lg font-bold text-white">Solicitar Pré-Orçamento Rápido</h3>
+              <p class="text-xs text-slate-400">Preencha os dados abaixo e envie diretamente para o WhatsApp do técnico:</p>
+            </div>
+
+            <form id="form-orcamento-contato" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold text-slate-300 mb-1.5">Seu Nome:</label>
+                  <input type="text" id="orcamento-nome" placeholder="Ex: Roberto Silva" required class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400">
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-300 mb-1.5">Tipo de Equipamento:</label>
+                  <select id="orcamento-tipo" class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:outline-none focus:border-cyan-400">
+                    <option value="Notebook">Notebook</option>
+                    <option value="Computador Desktop / PC">Computador Desktop / PC</option>
+                    <option value="PC Gamer">PC Gamer</option>
+                    <option value="Placa de Vídeo / Placa-Mãe">Placa de Vídeo / Placa-Mãe</option>
+                    <option value="Rede / CFTV">Redes / CFTV</option>
+                    <option value="Outro">Outro Equipamento</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1.5">Marca e Modelo do Aparelho:</label>
+                <input type="text" id="orcamento-modelo" placeholder="Ex: Dell Inspiron 15, Lenovo Ideapad, Ryzen 5 5600..." class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400">
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1.5">O que está acontecendo? (Defeito):</label>
+                <textarea id="orcamento-defeito" rows="3" placeholder="Ex: Não liga após raio, tela quebrada, esquentando e travando, precisa de formatação..." required class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs sm:text-sm transition shadow-lg shadow-emerald-900/30 flex items-center justify-center gap-2">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.861.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+                <span>Enviar Dados no WhatsApp</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- RODAPÉ COMPLETO (FOOTER)                                 -->
+  <!-- ======================================================== -->
+  <footer class="border-t border-slate-800 bg-slate-950 py-12 text-slate-400 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center font-bold text-slate-950">
+            CG
+          </div>
+          <div>
+            <span class="font-bold text-white text-sm">CG INFO</span>
+            <p class="text-[11px] text-slate-500">Assistência Técnica Especializada em Informática</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-6 text-slate-400">
+          <a href="#inicio" class="hover:text-cyan-400 transition">Início</a>
+          <a href="#servicos" class="hover:text-cyan-400 transition">Serviços</a>
+          <a href="#rastreio" class="hover:text-cyan-400 transition text-cyan-400">Consultar OS</a>
+          <a href="http://localhost:3000" target="_blank" class="text-slate-500 hover:text-slate-300 transition" title="Acesso Técnico Restrito">Painel Reparo Pro</a>
+        </div>
+
+        <p class="text-slate-500 text-[11px] text-center sm:text-right">
+          © 2026 CG Info. Todos os direitos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================== -->
+  <!-- MODAL DE ORDEM DE SERVIÇO EM TEMPO REAL                  -->
+  <!-- ======================================================== -->
+  <div id="modal-os" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-slate-950/85 backdrop-blur-md overflow-y-auto">
+    <div class="relative w-full max-w-3xl my-8 bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto">
+      
+      <!-- Botão Fechar Modal -->
+      <button id="btn-close-os-modal" class="absolute top-6 right-6 p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <!-- Conteúdo Injetado Dinamicamente -->
+      <div id="modal-os-content"></div>
+
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- BOTÃO FLUTUANTE DO WHATSAPP COM EFEITO DE PULSO          -->
+  <!-- ======================================================== -->
+  <a href="https://wa.me/5522999352646" target="_blank" class="whatsapp-float w-14 h-14 rounded-full bg-emerald-500 text-white flex items-center justify-center hover:bg-emerald-400 transition" title="Falar no WhatsApp">
+    <span class="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-red-500 border-2 border-slate-950 animate-ping"></span>
+    <span class="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-red-500 border-2 border-slate-950"></span>
+    <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.861.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+  </a>
+
+  <!-- Scripts -->
+  <script src="/js/os-tracker.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

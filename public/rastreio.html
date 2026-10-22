@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acompanhamento de Ordem de Serviço - CG Info</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2306b6d4'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between antialiased">
+
+  <!-- Topo -->
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-40">
+    <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center text-slate-950 font-black shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition">
+          CG
+        </div>
+        <div>
+          <span class="font-extrabold text-lg text-white tracking-tight block">CG INFO</span>
+          <span class="text-[11px] text-cyan-400 font-semibold tracking-wider uppercase">Portal de Acompanhamento</span>
+        </div>
+      </a>
+
+      <div class="flex items-center gap-3">
+        <a href="/" class="text-xs font-semibold text-slate-400 hover:text-white transition hidden sm:inline-block">
+          ← Voltar para o Site
+        </a>
+        <a href="https://wa.me/5522999352646" target="_blank" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition flex items-center gap-2">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.861.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+          <span>WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="max-w-4xl mx-auto px-4 py-8 w-full flex-1">
+    
+    <!-- Caixa de Busca Rápida de Outra OS -->
+    <div class="mb-8 p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
+      <form id="form-busca-rastreio" class="flex flex-col sm:flex-row gap-2">
+        <div class="relative flex-1">
+          <input 
+            type="text" 
+            id="input-busca-rastreio" 
+            placeholder="Digite o número da OS ou código de rastreio (ex: 538)" 
+            class="w-full pl-10 pr-4 py-3 bg-slate-950 border border-slate-700/80 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition"
+          >
+          <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </div>
+        </div>
+        <button type="submit" class="px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-xl text-sm transition">
+          Buscar OS
+        </button>
+      </form>
+    </div>
+
+    <!-- Contêiner do Resultado da OS -->
+    <div id="rastreio-container" class="bg-slate-900/90 rounded-2xl border border-slate-800 p-6 sm:p-8 shadow-2xl min-h-[300px]">
+      <div id="rastreio-loading" class="py-20 text-center space-y-4">
+        <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-cyan-500 border-t-transparent"></div>
+        <p class="text-sm text-slate-400 font-medium">Buscando informações do seu equipamento...</p>
+      </div>
+
+      <div id="rastreio-content" class="hidden"></div>
+    </div>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+    <p>© 2026 CG Info - Assistência Técnica Especializada em Informática. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="/js/os-tracker.js"></script>
+  <script>
+    // Customização da página dedicada de rastreio
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('rastreio-content');
+      const loading = document.getElementById('rastreio-loading');
+      const formRastreio = document.getElementById('form-busca-rastreio');
+      const inputRastreio = document.getElementById('input-busca-rastreio');
+
+      // Sobrescreve as funções de renderização para injetar no container em vez do modal
+      window.abrirModalOs = () => {};
+      window.fecharModalOs = () => {};
+      
+      const originalRenderDetails = window.renderOsDetails;
+      window.renderOsDetails = (os) => {
+        loading.classList.add('hidden');
+        container.classList.remove('hidden');
+        window.modalContent = container;
+        originalRenderDetails(os);
+      };
+
+      const originalRenderError = window.renderErrorState;
+      window.renderErrorState = (query) => {
+        loading.classList.add('hidden');
+        container.classList.remove('hidden');
+        window.modalContent = container;
+        originalRenderError(query);
+      };
+
+      if (formRastreio && inputRastreio) {
+        formRastreio.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const val = inputRastreio.value.trim();
+          if (val) {
+            loading.classList.remove('hidden');
+            container.classList.add('hidden');
+            consultarOs(val);
+          }
+        });
+      }
+
+      // Consulta automática por URL
+      const pathParts = window.location.pathname.split('/');
+      const tokenFromPath = pathParts[pathParts.length - 1];
+      const urlParams = new URLSearchParams(window.location.search);
+      const osQuery = urlParams.get('os') || urlParams.get('token') || (tokenFromPath && tokenFromPath !== 'rastreio.html' ? tokenFromPath : null);
+
+      if (osQuery) {
+        if (inputRastreio) inputRastreio.value = osQuery;
+        consultarOs(osQuery);
+      } else {
+        consultarOs('538'); // Carrega a OS mais recente por padrão
+      }
+    });
+  </script>
+</body>
+</html>

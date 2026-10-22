@@ -1,0 +1,22 @@
+{
+  "name": "site-cg-info",
+  "version": "1.0.0",
+  "description": "Website Oficial da CG Info - Assistência Técnica Especializada em Informática e Portal de Consulta de Ordem de Serviço",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "cg-info",
+    "assistencia-tecnica",
+    "manutencao-computadores",
+    "ordem-de-servico",
+    "reparo-notebook"
+  ],
+  "author": "CG Info",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}
