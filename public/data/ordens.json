@@ -1,0 +1,284 @@
+{
+  "empresa": {
+    "nome": "CG Info",
+    "telefone": "(22) 99935-2646",
+    "whatsapp": "22999352646",
+    "email": "contato@cginfotec.com.br",
+    "endereco": "Av. Otoniel Gomes Tavares, 1287 - Condomínio Mar da Irlanda, Bloco 6 Apt 110",
+    "cidade": "Macaé",
+    "estado": "RJ",
+    "garantiaPadrao": "Garantia legal de 90 (noventa) dias para o serviço executado e peças substituídas, contados a partir da data de entrega, conforme artigo 26 do Código de Defesa do Consumidor (Lei 8.078/90). A garantia não cobre danos por mau uso, umidade, quedas ou violação do lacre."
+  },
+  "totalOrdens": 6,
+  "ultimaAtualizacao": "2026-10-27T12:49:08.751Z",
+  "ordens": [
+    {
+      "id": "OS-538",
+      "numeroOs": 538,
+      "token": "83AIWF538",
+      "status": "RECEBIDO",
+      "createdAt": "2026-10-20T17:54:51.761Z",
+      "updatedAt": "2026-10-20T17:54:51.761Z",
+      "previsaoEntrega": "2026-10-20",
+      "defeitoRelatado": "limpeza",
+      "laudoTecnico": "",
+      "itens": [],
+      "valorTotal": 0,
+      "desconto": 0,
+      "valorFinal": 0,
+      "cliente": {
+        "nome": "Roberto Alcantara",
+        "telefone": "(11) 97123-9988"
+      },
+      "equipamento": {
+        "tipo": "Computador Desktop / PC",
+        "marca": "Gamer Custom",
+        "modelo": "Ryzen 7 5700X + RTX 3060",
+        "numeroSerie": "PC-GAMER-2026",
+        "acessorios": "Cabo de força",
+        "condicoes": "Gabinete de vidro com marcas de dedos"
+      },
+      "empresa": {
+        "nome": "CG Info",
+        "telefone": "(22) 99935-2646",
+        "whatsapp": "22999352646",
+        "email": "contato@cginfotec.com.br",
+        "endereco": "Av. Otoniel Gomes Tavares, 1287 - Condomínio Mar da Irlanda, Bloco 6 Apt 110",
+        "cidade": "Macaé",
+        "estado": "RJ",
+        "garantiaPadrao": "Garantia legal de 90 (noventa) dias para o serviço executado e peças substituídas, contados a partir da data de entrega, conforme artigo 26 do Código de Defesa do Consumidor (Lei 8.078/90). A garantia não cobre danos por mau uso, umidade, quedas ou violação do lacre."
+      },
+      "sincronizadoEm": "2026-10-27T12:49:08.747Z"
+    },
+    {
+      "id": "OS-1005",
+      "numeroOs": 1005,
+      "token": "AA9TFC1005",
+      "status": "REPROVADO",
+      "createdAt": "2026-10-19T19:36:18.690Z",
+      "updatedAt": "2026-10-19T19:38:06.734Z",
+      "previsaoEntrega": "",
+      "defeitoRelatado": "Não gera imagem",
+      "laudoTecnico": "",
+      "itens": [
+        {
+          "descricao": "",
+          "quantidade": 1,
+          "valorUnitario": 0,
+          "subtotal": 0
+        }
+      ],
+      "valorTotal": 0,
+      "desconto": 0,
+      "valorFinal": 0,
+      "cliente": {
+        "nome": "Teste",
+        "telefone": "1199999999"
+      },
+      "equipamento": {
+        "tipo": "Notebook",
+        "marca": "Lenovo",
+        "modelo": "Ideapad",
+        "numeroSerie": "",
+        "acessorios": "",
+        "condicoes": "Perfeito"
+      },
+      "empresa": {
+        "nome": "CG Info",
+        "telefone": "(22) 99935-2646",
+        "whatsapp": "22999352646",
+        "email": "contato@cginfotec.com.br",
+        "endereco": "Av. Otoniel Gomes Tavares, 1287 - Condomínio Mar da Irlanda, Bloco 6 Apt 110",
+        "cidade": "Macaé",
+        "estado": "RJ",
+        "garantiaPadrao": "Garantia legal de 90 (noventa) dias para o serviço executado e peças substituídas, contados a partir da data de entrega, conforme artigo 26 do Código de Defesa do Consumidor (Lei 8.078/90). A garantia não cobre danos por mau uso, umidade, quedas ou violação do lacre."
+      },
+      "sincronizadoEm": "2026-10-27T12:49:08.751Z"
+    },
+    {
+      "id": "OS-1004",
+      "numeroOs": 1004,
+      "token": "TNQR501004",
+      "status": "RECEBIDO",
+      "createdAt": "2026-10-19T19:34:39.170Z",
+      "updatedAt": "2026-10-19T19:34:39.170Z",
+      "previsaoEntrega": "",
+      "defeitoRelatado": "Não Liga",
+      "laudoTecnico": "Primario",
+      "itens": [
+        {
+          "descricao": "Reparo",
+          "quantidade": 1,
+          "valorUnitario": "190.0",
+          "subtotal": 190
+        }
+      ],
+      "valorTotal": 190,
+      "desconto": 0,
+      "valorFinal": 190,
+      "cliente": {
+        "nome": "Marcos Oliveira",
+        "telefone": "(11) 98765-4321"
+      },
+      "equipamento": {
+        "tipo": "Notebook",
+        "marca": "Dell",
+        "modelo": "Inspiron 15 3511",
+        "numeroSerie": "BRJ8472910",
+        "acessorios": "Fonte de alimentação original Dell 65W",
+        "condicoes": "Marcas de uso leves na tampa, tela intacta"
+      },
+      "empresa": {
+        "nome": "CG Info",
+        "telefone": "(22) 99935-2646",
+        "whatsapp": "22999352646",
+        "email": "contato@cginfotec.com.br",
+        "endereco": "Av. Otoniel Gomes Tavares, 1287 - Condomínio Mar da Irlanda, Bloco 6 Apt 110",
+        "cidade": "Macaé",
+        "estado": "RJ",
+        "garantiaPadrao": "Garantia legal de 90 (noventa) dias para o serviço executado e peças substituídas, contados a partir da data de entrega, conforme artigo 26 do Código de Defesa do Consumidor (Lei 8.078/90). A garantia não cobre danos por mau uso, umidade, quedas ou violação do lacre."
+      },
+      "sincronizadoEm": "2026-10-27T12:49:08.751Z"
+    },
+    {
+      "id": "OS-1001",
+      "numeroOs": 1001,
+      "token": "CG1001A",
+      "status": "PRONTO_RETIRADA",
+      "createdAt": "2026-10-15T14:40:00.000Z",
+      "updatedAt": "2026-10-16T15:00:00.000Z",
+      "previsaoEntrega": "2026-10-16",
+      "defeitoRelatado": "Aparelho desliga sozinho após 10 minutos de uso. Aquecimento excessivo na carcaça inferior.",
+      "laudoTecnico": "Constatada obstrução total das aletas do dissipador por poeira e pasta térmica original ressecada e petrificada. Realizada limpeza ultrassônica do cooler, desobstrução das saídas de ar e aplicação de pasta térmica de alta condutividade (Thermal Grizzly Kryonaut). Testado sob estresse térmico por 3 horas ininterruptas com temperatura máxima estável em 68°C.",
+      "itens": [
+        {
+          "descricao": "Desmontagem completa, limpeza química e troca de pasta térmica de alta performance",
+          "quantidade": 1,
+          "valorUnitario": 180,
+          "subtotal": 180
+        },
+        {
+          "descricao": "Substituição preventiva do cooler fan de rolamento",
+          "quantidade": 1,
+          "valorUnitario": 90,
+          "subtotal": 90
+        }
+      ],
+      "valorTotal": 270,
+      "desconto": 20,
+      "valorFinal": 250,
+      "cliente": {
+        "nome": "Marcos Oliveira",
+        "telefone": "(11) 98765-4321"
+      },
+      "equipamento": {
+        "tipo": "Notebook",
+        "marca": "Dell",
+        "modelo": "Inspiron 15 3511",
+        "numeroSerie": "BRJ8472910",
+        "acessorios": "Fonte de alimentação original Dell 65W",
+        "condicoes": "Marcas de uso leves na tampa, tela intacta"
+      },
+      "empresa": {
+        "nome": "CG Info",
+        "telefone": "(22) 99935-2646",
+        "whatsapp": "22999352646",
+        "email": "contato@cginfotec.com.br",
+        "endereco": "Av. Otoniel Gomes Tavares, 1287 - Condomínio Mar da Irlanda, Bloco 6 Apt 110",
+        "cidade": "Macaé",
+        "estado": "RJ",
+        "garantiaPadrao": "Garantia legal de 90 (noventa) dias para o serviço executado e peças substituídas, contados a partir da data de entrega, conforme artigo 26 do Código de Defesa do Consumidor (Lei 8.078/90). A garantia não cobre danos por mau uso, umidade, quedas ou violação do lacre."
+      },
+      "sincronizadoEm": "2026-10-27T12:49:08.751Z"
+    },
+    {
+      "id": "OS-1002",
+      "numeroOs": 1002,
+      "token": "CG1002B",
+      "status": "APROVADO",
+      "createdAt": "2026-10-16T09:30:00.000Z",
+      "updatedAt": "2026-10-17T15:17:54.831Z",
+      "previsaoEntrega": "2026-10-18",
+      "defeitoRelatado": "Queda no chão. Display não acende, aparelho apenas vibra ao receber chamadas.",
+      "laudoTecnico": "Display AMOLED interno quebrado por impacto mecânico. Placa principal e conectores FPC intactos sem danos. Necessária troca do módulo frontal completo original com aro.",
+      "itens": [
+        {
+          "descricao": "Módulo Frontal Original Samsung Galaxy S23 (Dynamic AMOLED 2X 120Hz)",
+          "quantidade": 1,
+          "valorUnitario": 750,
+          "subtotal": 750
+        },
+        {
+          "descricao": "Mão de obra especializada de troca de tela com vedação IP68",
+          "quantidade": 1,
+          "valorUnitario": 150,
+          "subtotal": 150
+        }
+      ],
+      "valorTotal": 900,
+      "desconto": 50,
+      "valorFinal": 850,
+      "cliente": {
+        "nome": "Juliana Santos",
+        "telefone": "(11) 99887-1122"
+      },
+      "equipamento": {
+        "tipo": "Celular / Smartphone",
+        "marca": "Samsung",
+        "modelo": "Galaxy S23 256GB",
+        "numeroSerie": "358921098471203",
+        "acessorios": "Capa protetora preta",
+        "condicoes": "Vidro traseiro trincado no canto superior"
+      },
+      "empresa": {
+        "nome": "CG Info",
+        "telefone": "(22) 99935-2646",
+        "whatsapp": "22999352646",
+        "email": "contato@cginfotec.com.br",
+        "endereco": "Av. Otoniel Gomes Tavares, 1287 - Condomínio Mar da Irlanda, Bloco 6 Apt 110",
+        "cidade": "Macaé",
+        "estado": "RJ",
+        "garantiaPadrao": "Garantia legal de 90 (noventa) dias para o serviço executado e peças substituídas, contados a partir da data de entrega, conforme artigo 26 do Código de Defesa do Consumidor (Lei 8.078/90). A garantia não cobre danos por mau uso, umidade, quedas ou violação do lacre."
+      },
+      "sincronizadoEm": "2026-10-27T12:49:08.751Z"
+    },
+    {
+      "id": "OS-1003",
+      "numeroOs": 1003,
+      "token": "CG1003C",
+      "status": "RECEBIDO",
+      "createdAt": "2026-10-16T11:15:00.000Z",
+      "updatedAt": "2026-10-16T11:15:00.000Z",
+      "previsaoEntrega": "2026-10-19",
+      "defeitoRelatado": "Computador liga as ventoinhas, acende LEDs, mas não dá vídeo no monitor.",
+      "laudoTecnico": "",
+      "itens": [],
+      "valorTotal": 0,
+      "desconto": 0,
+      "valorFinal": 0,
+      "cliente": {
+        "nome": "Roberto Alcantara",
+        "telefone": "(11) 97123-9988"
+      },
+      "equipamento": {
+        "tipo": "Computador Desktop / PC",
+        "marca": "Gamer Custom",
+        "modelo": "Ryzen 7 5700X + RTX 3060",
+        "numeroSerie": "PC-GAMER-2026",
+        "acessorios": "Cabo de força",
+        "condicoes": "Gabinete de vidro com marcas de dedos"
+      },
+      "empresa": {
+        "nome": "CG Info",
+        "telefone": "(22) 99935-2646",
+        "whatsapp": "22999352646",
+        "email": "contato@cginfotec.com.br",
+        "endereco": "Av. Otoniel Gomes Tavares, 1287 - Condomínio Mar da Irlanda, Bloco 6 Apt 110",
+        "cidade": "Macaé",
+        "estado": "RJ",
+        "garantiaPadrao": "Garantia legal de 90 (noventa) dias para o serviço executado e peças substituídas, contados a partir da data de entrega, conforme artigo 26 do Código de Defesa do Consumidor (Lei 8.078/90). A garantia não cobre danos por mau uso, umidade, quedas ou violação do lacre."
+      },
+      "sincronizadoEm": "2026-10-27T12:49:08.751Z"
+    }
+  ]
+}
