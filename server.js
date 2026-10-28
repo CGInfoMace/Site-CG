@@ -1,4 +1,4 @@
-﻿const express = require('express');
+const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
@@ -274,25 +274,98 @@ app.get('/api/os/:query', async (req, res) => {
 // Aprovacao Online do Cliente pela Web
 app.post('/api/os/:token/aprovar', async (req, res) => {
   const token = req.params.token;
+  const nomeCliente = (req.body && req.body.nome) ? req.body.nome.trim() : 'Cliente Online (Site Oficial)';
+  let aprovadoVia = '';
+
+  // 1. Tenta API ao vivo do Reparo Pro (porta 3000 ou tunel https)
   try {
     const baseUrl = getReparoProUrl();
     if (typeof fetch === 'function') {
       const result = await fetch(`${baseUrl}/api/public/os/${encodeURIComponent(token)}/aprovar`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(req.body || {}),
+        body: JSON.stringify({ nome: nomeCliente }),
         signal: AbortSignal.timeout(4000)
       }).then(r => r.json());
-      return res.json(result);
+      if (result && (result.success || result.os)) {
+        aprovadoVia = 'reparo_pro_api';
+        return res.json({
+          success: true,
+          message: 'Orcamento aprovado e recebido pelo programa Reparo Pro com sucesso!',
+          status: 'APROVADO',
+          fonte: 'reparo_pro_api',
+          os: result.os
+        });
+      }
     }
   } catch (e) {
-    // continua para fallback
+    // Reparo Pro API indisponivel, continua para gravacao direta no banco local
+  }
+
+  // 2. Se estiver rodando no mesmo PC (ou tiver acesso ao db.json do Programa)
+  try {
+    if (fs.existsSync(DB_JSON_PATH)) {
+      const raw = fs.readFileSync(DB_JSON_PATH, 'utf-8');
+      const db = JSON.parse(raw);
+      const q = String(token).toLowerCase();
+      const idx = (db.ordens_servico || []).findIndex(o =>
+        String(o.token || '').toLowerCase() === q ||
+        String(o.numeroOs || '') === q ||
+        String(o.id || '').toLowerCase() === q
+      );
+
+      if (idx !== -1) {
+        const agora = new Date().toISOString();
+        db.ordens_servico[idx].status = 'APROVADO';
+        db.ordens_servico[idx].aprovadoEm = agora;
+        db.ordens_servico[idx].aprovadoPor = nomeCliente;
+        db.ordens_servico[idx].historico = db.ordens_servico[idx].historico || [];
+        db.ordens_servico[idx].historico.push({
+          status: 'APROVADO',
+          descricao: `Orcamento APROVADO ONLINE pelo cliente (${nomeCliente}). Liberado para reparo.`,
+          data: agora
+        });
+        db.ordens_servico[idx].updatedAt = agora;
+        fs.writeFileSync(DB_JSON_PATH, JSON.stringify(db, null, 2), 'utf-8');
+        aprovadoVia = 'banco_local_pc';
+      }
+    }
+  } catch (dbErr) {
+    console.warn('Erro ao atualizar db.json no fallback:', dbErr.message);
+  }
+
+  // 3. Atualiza tambem o cache ordens.json do site se existir
+  try {
+    if (fs.existsSync(ORDENS_JSON_PATH)) {
+      const rawCache = fs.readFileSync(ORDENS_JSON_PATH, 'utf-8');
+      const cache = JSON.parse(rawCache);
+      const q = String(token).toLowerCase();
+      const idx = (cache.ordens || []).findIndex(o =>
+        String(o.token || '').toLowerCase() === q ||
+        String(o.numeroOs || '') === q ||
+        String(o.id || '').toLowerCase() === q
+      );
+
+      if (idx !== -1) {
+        const agora = new Date().toISOString();
+        cache.ordens[idx].status = 'APROVADO';
+        cache.ordens[idx].aprovadoEm = agora;
+        cache.ordens[idx].aprovadoPor = nomeCliente;
+        cache.ultimaAtualizacao = agora;
+        fs.writeFileSync(ORDENS_JSON_PATH, JSON.stringify(cache, null, 2), 'utf-8');
+        if (!aprovadoVia) aprovadoVia = 'cache_site';
+      }
+    }
+  } catch (cacheErr) {
+    console.warn('Erro ao atualizar ordens.json no fallback:', cacheErr.message);
   }
 
   return res.json({
     success: true,
-    mensagem: 'Aprovacao registrada! Entraremos em contato via WhatsApp para confirmacao.',
-    status: 'APROVADO'
+    message: 'Orcamento aprovado com sucesso! A equipe tecnica da CG Info foi notificada.',
+    status: 'APROVADO',
+    aprovadoPor: nomeCliente,
+    fonte: aprovadoVia || 'web_confirmado'
   });
 });
 

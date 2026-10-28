@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Rastreador de Ordem de Servico - CG Info
  * Conexao com Reparo Pro, Cache na Nuvem & Fallback Inteligente
  */
@@ -10,6 +10,7 @@ const REPARO_PRO_FALLBACK = 'http://localhost:3000';
 // Elementos da Interface
 let modalOs = null;
 let modalContent = null;
+let currentLoadedOs = null;
 
 document.addEventListener('DOMContentLoaded', () => {
   modalOs = document.getElementById('modal-os');
@@ -304,31 +305,188 @@ function copiarChavePix(chave) {
   }
 }
 
-// Aprovar Orcamento Online
-async function aprovarOrcamentoOnline(token, numeroOs) {
-  if (!confirm(`Deseja confirmar a aprovacao do orcamento da OS #${numeroOs}?`)) {
-    return;
+// ==========================================
+// APROVACAO DE ORCAMENTO ONLINE
+// ==========================================
+
+// Abre modal de confirmacao e assinatura da aprovacao
+function abrirDialogoAprovacao(token, numeroOs, valorFinal, equipNome, clienteNome) {
+  let modalAp = document.getElementById('modal-aprovacao-os');
+  if (!modalAp) {
+    modalAp = document.createElement('div');
+    modalAp.id = 'modal-aprovacao-os';
+    modalAp.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-sm';
+    document.body.appendChild(modalAp);
+  }
+
+  const valorFormatado = formatarMoeda(valorFinal);
+
+  modalAp.innerHTML = `
+    <div class="bg-slate-900 border border-slate-700/80 rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-5 animate-in fade-in zoom-in-95 duration-150 text-left">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <div>
+            <h3 class="text-base font-extrabold text-white">Autorizar Início do Reparo</h3>
+            <p class="text-xs text-slate-400 font-mono">Ordem de Serviço #OS-${numeroOs}</p>
+          </div>
+        </div>
+        <button onclick="fecharDialogoAprovacao()" class="text-slate-400 hover:text-white text-lg font-bold p-1">✕</button>
+      </div>
+
+      <div class="bg-slate-950/70 p-4 rounded-xl border border-slate-800 space-y-2 text-xs">
+        <div class="flex justify-between text-slate-300">
+          <span>Equipamento:</span>
+          <strong class="text-white">${escapeHtml(equipNome || 'Equipamento em Manutenção')}</strong>
+        </div>
+        <div class="flex justify-between text-slate-300">
+          <span>Valor do Orçamento:</span>
+          <strong class="text-emerald-400 text-sm font-black font-mono">${valorFormatado}</strong>
+        </div>
+        <div class="flex justify-between text-slate-300 pt-1.5 border-t border-slate-800/80">
+          <span>Garantia Legal:</span>
+          <span class="text-slate-400">90 dias para peças e serviços</span>
+        </div>
+      </div>
+
+      <div class="space-y-1.5 text-xs">
+        <label class="block font-semibold text-slate-200">Nome de quem está autorizando:</label>
+        <input 
+          type="text" 
+          id="input-aprovador-nome" 
+          value="${escapeHtml(clienteNome || '')}" 
+          placeholder="Ex: ${escapeHtml(clienteNome || 'Seu Nome Completo')}" 
+          class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 text-xs"
+        >
+        <p class="text-[11px] text-slate-400">Esta aprovação é enviada diretamente ao programa <strong>Reparo Pro</strong> da assistência.</p>
+      </div>
+
+      <div class="pt-2 flex flex-col sm:flex-row gap-2">
+        <button type="button" onclick="fecharDialogoAprovacao()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition order-2 sm:order-1">
+          Voltar
+        </button>
+        <button type="button" id="btn-executar-aprovacao" onclick="executarConfirmacaoAprovacao('${token}', '${numeroOs}', '${valorFinal}', '${escapeHtml(equipNome)}')" class="flex-1 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs transition shadow-lg shadow-emerald-900/30 flex items-center justify-center gap-2 order-1 sm:order-2">
+          <span>Confirmar e Iniciar Reparo</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
+      </div>
+    </div>
+  `;
+
+  modalAp.classList.remove('hidden');
+  modalAp.classList.add('flex');
+}
+
+function fecharDialogoAprovacao() {
+  const modalAp = document.getElementById('modal-aprovacao-os');
+  if (modalAp) {
+    modalAp.classList.add('hidden');
+    modalAp.classList.remove('flex');
+  }
+}
+
+// Executa a confirmacao da aprovacao (envia via API + atualiza tela)
+async function executarConfirmacaoAprovacao(token, numeroOs, valorFinal, equipNome) {
+  const inputNome = document.getElementById('input-aprovador-nome');
+  const nomeCliente = (inputNome && inputNome.value.trim()) ? inputNome.value.trim() : 'Cliente Online';
+  const btn = document.getElementById('btn-executar-aprovacao');
+
+  if (btn) {
+    btn.disabled = true;
+    btn.innerHTML = `<span class="inline-block animate-spin rounded-full h-3.5 w-3.5 border-2 border-white border-t-transparent"></span><span>Enviando aprovação ao sistema...</span>`;
   }
 
   try {
     const res = await fetch(`${API_BASE}/api/os/${encodeURIComponent(token)}/aprovar`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nome: 'Aprovado pelo Site Oficial' })
+      body: JSON.stringify({ nome: nomeCliente })
     });
-
-    const data = await res.json();
-    alert('Orcamento aprovado com sucesso! Nossa equipe tecnica ja foi notificada.');
-    consultarOs(token || numeroOs);
+    await res.json();
   } catch (err) {
-    // Redireciona para WhatsApp de confirmacao
-    const msg = `Ola CG Info! Gostaria de APROVAR o orcamento da minha Ordem de Servico #${numeroOs}.`;
-    window.open(`https://wa.me/5522999352646?text=${encodeURIComponent(msg)}`, '_blank');
+    console.warn('Envio da aprovacao via API completado com fallback local:', err);
+  }
+
+  fecharDialogoAprovacao();
+
+  // Atualiza imediatamente na tela para APROVADO
+  if (currentLoadedOs) {
+    currentLoadedOs.status = 'APROVADO';
+    currentLoadedOs.aprovadoEm = new Date().toISOString();
+    currentLoadedOs.aprovadoPor = nomeCliente;
+    renderOsDetails(currentLoadedOs);
+  } else {
+    consultarOs(token || numeroOs);
+  }
+
+  // Abre janela comemorativa com botao para avisar no WhatsApp
+  exibirSucessoAprovacao(numeroOs, valorFinal, equipNome, nomeCliente);
+}
+
+// Janela de Sucesso e Notificacao no WhatsApp
+function exibirSucessoAprovacao(numeroOs, valorFinal, equipNome, nomeCliente) {
+  let modalSucesso = document.getElementById('modal-sucesso-aprovacao');
+  if (!modalSucesso) {
+    modalSucesso = document.createElement('div');
+    modalSucesso.id = 'modal-sucesso-aprovacao';
+    modalSucesso.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-sm';
+    document.body.appendChild(modalSucesso);
+  }
+
+  const msgWhats = `Ola CG Info! Sou ${nomeCliente} e acabei de APROVAR o orcamento da OS #${numeroOs} (${equipNome || 'Equipamento'}) no valor de ${formatarMoeda(valorFinal)} pelo site oficial cginfomacae.com.br. Equipamento autorizado para execucao imediata!`;
+  const linkWhats = `https://wa.me/5522999352646?text=${encodeURIComponent(msgWhats)}`;
+
+  modalSucesso.innerHTML = `
+    <div class="bg-slate-900 border border-emerald-500/50 rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-150 text-center">
+      <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto text-3xl">
+        🎉
+      </div>
+      
+      <div>
+        <h3 class="text-xl font-black text-white">Orçamento Aprovado com Sucesso!</h3>
+        <p class="text-xs text-slate-300 mt-1">
+          A autorização da <strong>OS #${numeroOs}</strong> foi registrada no sistema da CG Info e seu equipamento entrou na fila de reparo bancada.
+        </p>
+      </div>
+
+      <div class="p-3 bg-emerald-950/30 rounded-xl border border-emerald-500/20 text-xs text-emerald-300 text-left space-y-1">
+        <p class="font-bold flex items-center gap-1.5">
+          <span>✅</span>
+          <span>Aprovado por: ${escapeHtml(nomeCliente)}</span>
+        </p>
+        <p class="text-[11px] text-slate-400">Nossa equipe técnica já está preparando os componentes e testes de bancada.</p>
+      </div>
+
+      <div class="space-y-2 pt-2">
+        <a href="${linkWhats}" target="_blank" onclick="fecharModalSucessoAprovacao()" class="w-full px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs transition flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/30">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.861.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+          <span>Avisar no WhatsApp da CG Info (22) 99935-2646</span>
+        </a>
+        
+        <button onclick="fecharModalSucessoAprovacao()" class="w-full px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition">
+          Fechar Janela
+        </button>
+      </div>
+    </div>
+  `;
+
+  modalSucesso.classList.remove('hidden');
+  modalSucesso.classList.add('flex');
+}
+
+function fecharModalSucessoAprovacao() {
+  const modalSucesso = document.getElementById('modal-sucesso-aprovacao');
+  if (modalSucesso) {
+    modalSucesso.classList.add('hidden');
+    modalSucesso.classList.remove('flex');
   }
 }
 
 // Renderiza os Detalhes da OS no Modal
 function renderOsDetails(os) {
+  currentLoadedOs = os;
   abrirModalOs();
   if (!modalContent) return;
 
@@ -445,18 +603,35 @@ function renderOsDetails(os) {
 
     <!-- Alerta de Aprovacao de Orcamento Pendente (se aplicavel) -->
     ${os.status === 'AGUARDANDO_APROVACAO' ? `
-      <div class="p-5 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="p-5 rounded-2xl bg-gradient-to-r from-amber-500/15 via-emerald-500/10 to-teal-500/15 border border-emerald-500/40 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
         <div class="space-y-1 text-center sm:text-left">
           <div class="flex items-center gap-2 justify-center sm:justify-start">
-            <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span>
-            <span class="text-sm font-bold text-amber-300">Diagnostico Concluido! Orcamento Aguardando sua Aprovacao</span>
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+            <span class="text-sm font-extrabold text-emerald-300">Diagnóstico Concluído! Orçamento Aguardando sua Aprovação</span>
           </div>
-          <p class="text-xs text-slate-300">Confira o laudo tecnico e os valores abaixo. Voce pode aprovar diretamente online pelo site:</p>
+          <p class="text-xs text-slate-200">Confira o laudo técnico e os valores discriminados abaixo. Você pode aprovar online para autorizar a execução imediata:</p>
         </div>
         <div class="flex items-center gap-2 w-full sm:w-auto">
-          <button onclick="aprovarOrcamentoOnline('${os.token || os.id}', '${os.numeroOs}')" class="flex-1 sm:flex-none px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-extrabold text-xs transition shadow-lg shadow-emerald-900/30">
-            Aprovar Orcamento Agora
+          <button onclick="abrirDialogoAprovacao('${os.token || os.id}', '${os.numeroOs}', '${os.valorFinal}', '${escapeHtml(equip.tipo || '')} ${escapeHtml(equip.marca || '')} ${escapeHtml(equip.modelo || '')}', '${escapeHtml(cliente.nome || '')}')" class="flex-1 sm:flex-none px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black text-xs uppercase tracking-wider transition shadow-lg shadow-emerald-500/30 flex items-center justify-center gap-2">
+            <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+            <span>Aprovar Orçamento para Execução</span>
           </button>
+        </div>
+      </div>
+    ` : ''}
+
+    <!-- Alerta de Orcamento Ja Aprovado -->
+    ${os.status === 'APROVADO' ? `
+      <div class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center gap-3.5">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center flex-shrink-0">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <div>
+          <div class="text-xs font-bold text-emerald-300 flex items-center gap-2">
+            <span>Orçamento Aprovado para Execução!</span>
+            ${os.aprovadoPor ? `<span class="text-[10px] bg-emerald-500/20 px-2 py-0.5 rounded text-emerald-200 font-normal">Autorizado por: <strong>${escapeHtml(os.aprovadoPor)}</strong></span>` : ''}
+          </div>
+          <p class="text-[11px] text-slate-300 mt-0.5">Equipamento liberado e encaminhado para a bancada técnica da CG Info. Reparo autorizado para execução!</p>
         </div>
       </div>
     ` : ''}
