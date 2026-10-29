@@ -309,6 +309,31 @@ function copiarChavePix(chave) {
 // APROVACAO DE ORCAMENTO ONLINE
 // ==========================================
 
+// Verifica se a OS pode ser aprovada pelo cliente online
+function podeAprovarOs(os) {
+  if (!os) return false;
+  const st = String(os.status || '').toUpperCase().trim();
+
+  // Se ja esta aprovado, em reparo, pronto, entregue ou reprovado, nao precisa de botao de aprovar
+  if (['APROVADO', 'EM_REPARO', 'PRONTO_RETIRADA', 'FINALIZADO', 'REPROVADO', 'CANCELADO'].includes(st)) {
+    return false;
+  }
+
+  // Se o status e explicitamente de orcamento / aguardando aprovacao
+  if (st.includes('APROV') || st === 'AGUARDANDO_APROVACAO' || st === 'AGUARDANDO APROVACAO' || st === 'ORCAMENTO') {
+    return true;
+  }
+
+  // Se tem itens de servico/pecas adicionados ou valor maior que zero
+  const val = parseFloat(os.valorFinal) || parseFloat(os.valorTotal) || 0;
+  const temItens = Array.isArray(os.itens) && os.itens.length > 0;
+  if (val > 0 || temItens) {
+    return true;
+  }
+
+  return false;
+}
+
 // Abre modal de confirmacao e assinatura da aprovacao
 function abrirDialogoAprovacao(token, numeroOs, valorFinal, equipNome, clienteNome) {
   let modalAp = document.getElementById('modal-aprovacao-os');
@@ -602,17 +627,17 @@ function renderOsDetails(os) {
     </div>
 
     <!-- Alerta de Aprovacao de Orcamento Pendente (se aplicavel) -->
-    ${os.status === 'AGUARDANDO_APROVACAO' ? `
+    ${podeAprovarOs(os) ? `
       <div class="p-5 rounded-2xl bg-gradient-to-r from-amber-500/15 via-emerald-500/10 to-teal-500/15 border border-emerald-500/40 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
         <div class="space-y-1 text-center sm:text-left">
           <div class="flex items-center gap-2 justify-center sm:justify-start">
             <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-            <span class="text-sm font-extrabold text-emerald-300">Diagnóstico Concluído! Orçamento Aguardando sua Aprovação</span>
+            <span class="text-sm font-extrabold text-emerald-300">Orçamento Pronto para sua Aprovação</span>
           </div>
-          <p class="text-xs text-slate-200">Confira o laudo técnico e os valores discriminados abaixo. Você pode aprovar online para autorizar a execução imediata:</p>
+          <p class="text-xs text-slate-200">Confira o laudo técnico e os valores discriminados abaixo. Você pode aprovar diretamente online para liberar o início imediato do reparo:</p>
         </div>
         <div class="flex items-center gap-2 w-full sm:w-auto">
-          <button onclick="abrirDialogoAprovacao('${os.token || os.id}', '${os.numeroOs}', '${os.valorFinal}', '${escapeHtml(equip.tipo || '')} ${escapeHtml(equip.marca || '')} ${escapeHtml(equip.modelo || '')}', '${escapeHtml(cliente.nome || '')}')" class="flex-1 sm:flex-none px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black text-xs uppercase tracking-wider transition shadow-lg shadow-emerald-500/30 flex items-center justify-center gap-2">
+          <button onclick="abrirDialogoAprovacao('${os.token || os.id}', '${os.numeroOs}', '${os.valorFinal || os.valorTotal || 0}', '${escapeHtml(equip.tipo || '')} ${escapeHtml(equip.marca || '')} ${escapeHtml(equip.modelo || '')}', '${escapeHtml(cliente.nome || '')}')" class="flex-1 sm:flex-none px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black text-xs uppercase tracking-wider transition shadow-lg shadow-emerald-500/30 flex items-center justify-center gap-2">
             <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
             <span>Aprovar Orçamento para Execução</span>
           </button>

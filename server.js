@@ -9,7 +9,19 @@ const PORT = process.env.PORT || 3001;
 // Caminhos de Dados
 const CONFIG_FILE = path.join(__dirname, 'config-site.json');
 const ORDENS_JSON_PATH = path.join(__dirname, 'public', 'data', 'ordens.json');
-const DB_JSON_PATH = path.resolve(__dirname, '..', '..', 'Programa', 'data', 'db.json');
+
+function getDbJsonPath() {
+  const candidates = [
+    'C:\\ReparoPro\\data\\db.json',
+    path.resolve(__dirname, '..', '..', 'Programa', 'data', 'db.json'),
+    path.resolve(__dirname, '..', 'Programa', 'data', 'db.json')
+  ];
+  for (const c of candidates) {
+    if (fs.existsSync(c)) return c;
+  }
+  return 'C:\\ReparoPro\\data\\db.json';
+}
+const DB_JSON_PATH = getDbJsonPath();
 
 // Obtem URL do Reparo Pro configurada
 function getReparoProUrl() {

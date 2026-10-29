@@ -3,14 +3,14 @@
     "nome": "CG Info",
     "telefone": "(22) 99935-2646",
     "whatsapp": "22999352646",
-    "email": "contato@cginfotec.com.br",
+    "email": "cginfomacae@gmail.com",
     "endereco": "Av. Otoniel Gomes Tavares, 1287 - Condomínio Mar da Irlanda, Bloco 6 Apt 110",
     "cidade": "Macaé",
     "estado": "RJ",
     "garantiaPadrao": "Garantia legal de 90 (noventa) dias para o serviço executado e peças substituídas, contados a partir da data de entrega, conforme artigo 26 do Código de Defesa do Consumidor (Lei 8.078/90). A garantia não cobre danos por mau uso, umidade, quedas ou violação do lacre."
   },
   "totalOrdens": 6,
-  "ultimaAtualizacao": "2026-10-27T12:49:08.751Z",
+  "ultimaAtualizacao": "2026-10-29T17:38:03.694Z",
   "ordens": [
     {
       "id": "OS-538",
@@ -42,13 +42,13 @@
         "nome": "CG Info",
         "telefone": "(22) 99935-2646",
         "whatsapp": "22999352646",
-        "email": "contato@cginfotec.com.br",
+        "email": "cginfomacae@gmail.com",
         "endereco": "Av. Otoniel Gomes Tavares, 1287 - Condomínio Mar da Irlanda, Bloco 6 Apt 110",
         "cidade": "Macaé",
         "estado": "RJ",
         "garantiaPadrao": "Garantia legal de 90 (noventa) dias para o serviço executado e peças substituídas, contados a partir da data de entrega, conforme artigo 26 do Código de Defesa do Consumidor (Lei 8.078/90). A garantia não cobre danos por mau uso, umidade, quedas ou violação do lacre."
       },
-      "sincronizadoEm": "2026-10-27T12:49:08.747Z"
+      "sincronizadoEm": "2026-10-29T17:38:03.676Z"
     },
     {
       "id": "OS-1005",
@@ -87,13 +87,13 @@
         "nome": "CG Info",
         "telefone": "(22) 99935-2646",
         "whatsapp": "22999352646",
-        "email": "contato@cginfotec.com.br",
+        "email": "cginfomacae@gmail.com",
         "endereco": "Av. Otoniel Gomes Tavares, 1287 - Condomínio Mar da Irlanda, Bloco 6 Apt 110",
         "cidade": "Macaé",
         "estado": "RJ",
         "garantiaPadrao": "Garantia legal de 90 (noventa) dias para o serviço executado e peças substituídas, contados a partir da data de entrega, conforme artigo 26 do Código de Defesa do Consumidor (Lei 8.078/90). A garantia não cobre danos por mau uso, umidade, quedas ou violação do lacre."
       },
-      "sincronizadoEm": "2026-10-27T12:49:08.751Z"
+      "sincronizadoEm": "2026-10-29T17:38:03.694Z"
     },
     {
       "id": "OS-1004",
@@ -132,13 +132,13 @@
         "nome": "CG Info",
         "telefone": "(22) 99935-2646",
         "whatsapp": "22999352646",
-        "email": "contato@cginfotec.com.br",
+        "email": "cginfomacae@gmail.com",
         "endereco": "Av. Otoniel Gomes Tavares, 1287 - Condomínio Mar da Irlanda, Bloco 6 Apt 110",
         "cidade": "Macaé",
         "estado": "RJ",
         "garantiaPadrao": "Garantia legal de 90 (noventa) dias para o serviço executado e peças substituídas, contados a partir da data de entrega, conforme artigo 26 do Código de Defesa do Consumidor (Lei 8.078/90). A garantia não cobre danos por mau uso, umidade, quedas ou violação do lacre."
       },
-      "sincronizadoEm": "2026-10-27T12:49:08.751Z"
+      "sincronizadoEm": "2026-10-29T17:38:03.694Z"
     },
     {
       "id": "OS-1001",
@@ -183,13 +183,13 @@
         "nome": "CG Info",
         "telefone": "(22) 99935-2646",
         "whatsapp": "22999352646",
-        "email": "contato@cginfotec.com.br",
+        "email": "cginfomacae@gmail.com",
         "endereco": "Av. Otoniel Gomes Tavares, 1287 - Condomínio Mar da Irlanda, Bloco 6 Apt 110",
         "cidade": "Macaé",
         "estado": "RJ",
         "garantiaPadrao": "Garantia legal de 90 (noventa) dias para o serviço executado e peças substituídas, contados a partir da data de entrega, conforme artigo 26 do Código de Defesa do Consumidor (Lei 8.078/90). A garantia não cobre danos por mau uso, umidade, quedas ou violação do lacre."
       },
-      "sincronizadoEm": "2026-10-27T12:49:08.751Z"
+      "sincronizadoEm": "2026-10-29T17:38:03.694Z"
     },
     {
       "id": "OS-1002",
@@ -234,28 +234,35 @@
         "nome": "CG Info",
         "telefone": "(22) 99935-2646",
         "whatsapp": "22999352646",
-        "email": "contato@cginfotec.com.br",
+        "email": "cginfomacae@gmail.com",
         "endereco": "Av. Otoniel Gomes Tavares, 1287 - Condomínio Mar da Irlanda, Bloco 6 Apt 110",
         "cidade": "Macaé",
         "estado": "RJ",
         "garantiaPadrao": "Garantia legal de 90 (noventa) dias para o serviço executado e peças substituídas, contados a partir da data de entrega, conforme artigo 26 do Código de Defesa do Consumidor (Lei 8.078/90). A garantia não cobre danos por mau uso, umidade, quedas ou violação do lacre."
       },
-      "sincronizadoEm": "2026-10-27T12:49:08.751Z"
+      "sincronizadoEm": "2026-10-29T17:38:03.694Z"
     },
     {
       "id": "OS-1003",
       "numeroOs": 1003,
       "token": "CG1003C",
-      "status": "RECEBIDO",
+      "status": "AGUARDANDO_APROVACAO",
       "createdAt": "2026-10-16T11:15:00.000Z",
-      "updatedAt": "2026-10-16T11:15:00.000Z",
+      "updatedAt": "2026-10-29T00:22:27.647Z",
       "previsaoEntrega": "2026-10-19",
       "defeitoRelatado": "Computador liga as ventoinhas, acende LEDs, mas não dá vídeo no monitor.",
-      "laudoTecnico": "",
-      "itens": [],
-      "valorTotal": 0,
+      "laudoTecnico": "Circuito",
+      "itens": [
+        {
+          "descricao": "Reparo",
+          "quantidade": 1,
+          "valorUnitario": "300.0",
+          "subtotal": 300
+        }
+      ],
+      "valorTotal": 300,
       "desconto": 0,
-      "valorFinal": 0,
+      "valorFinal": 300,
       "cliente": {
         "nome": "Roberto Alcantara",
         "telefone": "(11) 97123-9988"
@@ -272,13 +279,13 @@
         "nome": "CG Info",
         "telefone": "(22) 99935-2646",
         "whatsapp": "22999352646",
-        "email": "contato@cginfotec.com.br",
+        "email": "cginfomacae@gmail.com",
         "endereco": "Av. Otoniel Gomes Tavares, 1287 - Condomínio Mar da Irlanda, Bloco 6 Apt 110",
         "cidade": "Macaé",
         "estado": "RJ",
         "garantiaPadrao": "Garantia legal de 90 (noventa) dias para o serviço executado e peças substituídas, contados a partir da data de entrega, conforme artigo 26 do Código de Defesa do Consumidor (Lei 8.078/90). A garantia não cobre danos por mau uso, umidade, quedas ou violação do lacre."
       },
-      "sincronizadoEm": "2026-10-27T12:49:08.751Z"
+      "sincronizadoEm": "2026-10-29T17:38:03.694Z"
     }
   ]
 }
