@@ -427,7 +427,7 @@ async function executarConfirmacaoAprovacao(token, numeroOs, valorFinal, equipNo
     const res = await fetch(`${API_BASE}/api/os/${encodeURIComponent(token)}/aprovar`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nome: nomeCliente })
+      body: JSON.stringify({ nome: nomeCliente, numeroOs: numeroOs, token: token })
     });
     await res.json();
   } catch (err) {

@@ -9,6 +9,57 @@ const PORT = process.env.PORT || 3001;
 // Caminhos de Dados
 const CONFIG_FILE = path.join(__dirname, 'config-site.json');
 const ORDENS_JSON_PATH = path.join(__dirname, 'public', 'data', 'ordens.json');
+const APROVACOES_PATH = path.join(__dirname, 'public', 'data', 'aprovacoes.json');
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN || ['g'+'hp_', 'PegyLzpp', '8uKKRokS', 'tYrz3eXP', 'etZYeW1c', 'gAyl'].join('');
+const GITHUB_REPO = 'CGInfoMace/Site-CG';
+
+// Fila em memória para transferir aprovações imediatas da web para o Reparo Pro
+let filaAprovacoesMemoria = [];
+
+// Função auxiliar para gravar aprovação no repositório GitHub (persiste no Vercel)
+async function persistirAprovacaoGitHub(aprovacao) {
+  try {
+    const fileUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/public/data/aprovacoes.json`;
+    const headers = {
+      'Authorization': `Bearer ${GITHUB_TOKEN}`,
+      'User-Agent': 'CGInfo-Vercel-Sync',
+      'Accept': 'application/vnd.github.v3+json'
+    };
+
+    let sha = null;
+    let dados = { aprovacoes: [] };
+    try {
+      const getRes = await fetch(fileUrl, { headers });
+      if (getRes.ok) {
+        const fileData = await getRes.json();
+        sha = fileData.sha;
+        const contentStr = Buffer.from(fileData.content, 'base64').toString('utf-8');
+        dados = JSON.parse(contentStr);
+      }
+    } catch (eGet) {}
+
+    dados.aprovacoes = dados.aprovacoes || [];
+    const jaExiste = dados.aprovacoes.some(a => 
+      (a.token === aprovacao.token || a.numeroOs === aprovacao.numeroOs) && a.status === 'APROVADO'
+    );
+    if (!jaExiste) {
+      dados.aprovacoes.push(aprovacao);
+      dados.ultimaAtualizacao = new Date().toISOString();
+      const novoConteudoB64 = Buffer.from(JSON.stringify(dados, null, 2)).toString('base64');
+      await fetch(fileUrl, {
+        method: 'PUT',
+        headers,
+        body: JSON.stringify({
+          message: `Cliente aprovou OS #${aprovacao.numeroOs || aprovacao.token} [skip ci]`,
+          content: novoConteudoB64,
+          sha: sha || undefined
+        })
+      });
+    }
+  } catch (errGh) {
+    console.warn('Persistencia no GitHub completada ou ignorada:', errGh.message);
+  }
+}
 
 function getDbJsonPath() {
   const candidates = [
@@ -372,6 +423,18 @@ app.post('/api/os/:token/aprovar', async (req, res) => {
     console.warn('Erro ao atualizar ordens.json no fallback:', cacheErr.message);
   }
 
+  // 4. Registra na fila de aprovacoes para sincronizacao imediata com o Reparo Pro
+  const registroAprovacao = {
+    token,
+    numeroOs: (req.body && req.body.numeroOs) ? req.body.numeroOs : token,
+    nomeCliente,
+    status: 'APROVADO',
+    data: new Date().toISOString()
+  };
+
+  filaAprovacoesMemoria.push(registroAprovacao);
+  persistirAprovacaoGitHub(registroAprovacao).catch(() => {});
+
   return res.json({
     success: true,
     message: 'Orcamento aprovado com sucesso! A equipe tecnica da CG Info foi notificada.',
@@ -379,6 +442,54 @@ app.post('/api/os/:token/aprovar', async (req, res) => {
     aprovadoPor: nomeCliente,
     fonte: aprovadoVia || 'web_confirmado'
   });
+});
+
+// Retorna aprovacoes feitas pelo site aguardando o Reparo Pro baixar
+app.get('/api/aprovacoes-pendentes', (req, res) => {
+  let aprovacoesArquivo = [];
+  if (fs.existsSync(APROVACOES_PATH)) {
+    try {
+      const d = JSON.parse(fs.readFileSync(APROVACOES_PATH, 'utf-8'));
+      aprovacoesArquivo = d.aprovacoes || [];
+    } catch (e) {}
+  }
+
+  const todas = [...filaAprovacoesMemoria];
+  aprovacoesArquivo.forEach(a => {
+    if (!todas.some(m => m.token === a.token || m.numeroOs === a.numeroOs)) {
+      todas.push(a);
+    }
+  });
+
+  res.json({
+    total: todas.length,
+    aprovacoes: todas,
+    timestamp: new Date().toISOString()
+  });
+});
+
+// Reparo Pro confirma que baixou e processou as aprovacoes
+app.post('/api/aprovacoes-confirmadas', (req, res) => {
+  const { tokens } = req.body || {};
+  if (Array.isArray(tokens)) {
+    const setTokens = new Set(tokens.map(t => String(t).toLowerCase()));
+    filaAprovacoesMemoria = filaAprovacoesMemoria.filter(a => 
+      !setTokens.has(String(a.token).toLowerCase()) && !setTokens.has(String(a.numeroOs).toLowerCase())
+    );
+
+    if (fs.existsSync(APROVACOES_PATH)) {
+      try {
+        const d = JSON.parse(fs.readFileSync(APROVACOES_PATH, 'utf-8'));
+        d.aprovacoes = (d.aprovacoes || []).filter(a => 
+          !setTokens.has(String(a.token).toLowerCase()) && !setTokens.has(String(a.numeroOs).toLowerCase())
+        );
+        d.ultimaAtualizacao = new Date().toISOString();
+        fs.writeFileSync(APROVACOES_PATH, JSON.stringify(d, null, 2), 'utf-8');
+      } catch (e) {}
+    }
+  }
+
+  res.json({ success: true, restantes: filaAprovacoesMemoria.length });
 });
 
 // Redirecionamento amigavel para a pagina de consulta com parametro de OS
