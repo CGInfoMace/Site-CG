@@ -4,9 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Acompanhamento de Ordem de Serviço - CG Info</title>
+  <meta property="og:title" content="Acompanhamento de Ordem de Serviço - CG Info">
+  <meta property="og:description" content="Consulte o status em tempo real da sua Ordem de Serviço na CG Info.">
+  <meta property="og:image" content="/assets/images/logo.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2306b6d4'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/favicon.png">
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between antialiased">
 
@@ -14,8 +21,10 @@
   <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-40">
     <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
       <a href="/" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center text-slate-950 font-black shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition">
-          CG
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-cyan-500 to-emerald-400 p-[2px] shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition">
+          <div class="w-full h-full bg-white rounded-[8px] overflow-hidden flex items-center justify-center p-0.5">
+            <img src="/assets/images/logo.png" alt="CG Info" class="w-full h-full object-contain">
+          </div>
         </div>
         <div>
           <span class="font-extrabold text-lg text-white tracking-tight block">CG INFO</span>

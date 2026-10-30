@@ -10,7 +10,7 @@
     "garantiaPadrao": "Garantia legal de 90 (noventa) dias para o serviço executado e peças substituídas, contados a partir da data de entrega, conforme artigo 26 do Código de Defesa do Consumidor (Lei 8.078/90). A garantia não cobre danos por mau uso, umidade, quedas ou violação do lacre."
   },
   "totalOrdens": 6,
-  "ultimaAtualizacao": "2026-10-30T12:18:45.260Z",
+  "ultimaAtualizacao": "2026-10-30T12:20:16.084Z",
   "ordens": [
     {
       "id": "OS-538",
@@ -48,7 +48,7 @@
         "estado": "RJ",
         "garantiaPadrao": "Garantia legal de 90 (noventa) dias para o serviço executado e peças substituídas, contados a partir da data de entrega, conforme artigo 26 do Código de Defesa do Consumidor (Lei 8.078/90). A garantia não cobre danos por mau uso, umidade, quedas ou violação do lacre."
       },
-      "sincronizadoEm": "2026-10-30T12:18:45.260Z"
+      "sincronizadoEm": "2026-10-30T12:20:16.084Z"
     },
     {
       "id": "OS-1005",
@@ -93,7 +93,7 @@
         "estado": "RJ",
         "garantiaPadrao": "Garantia legal de 90 (noventa) dias para o serviço executado e peças substituídas, contados a partir da data de entrega, conforme artigo 26 do Código de Defesa do Consumidor (Lei 8.078/90). A garantia não cobre danos por mau uso, umidade, quedas ou violação do lacre."
       },
-      "sincronizadoEm": "2026-10-30T12:18:45.260Z"
+      "sincronizadoEm": "2026-10-30T12:20:16.084Z"
     },
     {
       "id": "OS-1004",
@@ -101,7 +101,7 @@
       "token": "TNQR501004",
       "status": "APROVADO",
       "createdAt": "2026-10-19T19:34:39.170Z",
-      "updatedAt": "2026-10-30T12:18:40.982Z",
+      "updatedAt": "2026-10-30T12:20:16.074Z",
       "previsaoEntrega": "",
       "defeitoRelatado": "Não Liga",
       "laudoTecnico": "Primario",
@@ -138,7 +138,7 @@
         "estado": "RJ",
         "garantiaPadrao": "Garantia legal de 90 (noventa) dias para o serviço executado e peças substituídas, contados a partir da data de entrega, conforme artigo 26 do Código de Defesa do Consumidor (Lei 8.078/90). A garantia não cobre danos por mau uso, umidade, quedas ou violação do lacre."
       },
-      "sincronizadoEm": "2026-10-30T12:18:45.260Z"
+      "sincronizadoEm": "2026-10-30T12:20:16.084Z"
     },
     {
       "id": "OS-1001",
@@ -189,7 +189,7 @@
         "estado": "RJ",
         "garantiaPadrao": "Garantia legal de 90 (noventa) dias para o serviço executado e peças substituídas, contados a partir da data de entrega, conforme artigo 26 do Código de Defesa do Consumidor (Lei 8.078/90). A garantia não cobre danos por mau uso, umidade, quedas ou violação do lacre."
       },
-      "sincronizadoEm": "2026-10-30T12:18:45.260Z"
+      "sincronizadoEm": "2026-10-30T12:20:16.084Z"
     },
     {
       "id": "OS-1002",
@@ -240,15 +240,15 @@
         "estado": "RJ",
         "garantiaPadrao": "Garantia legal de 90 (noventa) dias para o serviço executado e peças substituídas, contados a partir da data de entrega, conforme artigo 26 do Código de Defesa do Consumidor (Lei 8.078/90). A garantia não cobre danos por mau uso, umidade, quedas ou violação do lacre."
       },
-      "sincronizadoEm": "2026-10-30T12:18:45.260Z"
+      "sincronizadoEm": "2026-10-30T12:20:16.084Z"
     },
     {
       "id": "OS-1003",
       "numeroOs": 1003,
       "token": "CG1003C",
-      "status": "EM_REPARO",
+      "status": "APROVADO",
       "createdAt": "2026-10-16T11:15:00.000Z",
-      "updatedAt": "2026-10-30T12:18:45.149Z",
+      "updatedAt": "2026-10-30T12:20:16.081Z",
       "previsaoEntrega": "2026-10-19",
       "defeitoRelatado": "Computador liga as ventoinhas, acende LEDs, mas não dá vídeo no monitor.",
       "laudoTecnico": "Circuito",
@@ -285,7 +285,7 @@
         "estado": "RJ",
         "garantiaPadrao": "Garantia legal de 90 (noventa) dias para o serviço executado e peças substituídas, contados a partir da data de entrega, conforme artigo 26 do Código de Defesa do Consumidor (Lei 8.078/90). A garantia não cobre danos por mau uso, umidade, quedas ou violação do lacre."
       },
-      "sincronizadoEm": "2026-10-30T12:18:45.260Z"
+      "sincronizadoEm": "2026-10-30T12:20:16.084Z"
     }
   ]
 }
