@@ -61,6 +61,43 @@ async function persistirAprovacaoGitHub(aprovacao) {
   }
 }
 
+async function persistirAprovacoesConfirmadasGitHub(setTokens) {
+  try {
+    const fileUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/public/data/aprovacoes.json`;
+    const headers = {
+      'Authorization': `Bearer ${GITHUB_TOKEN}`,
+      'User-Agent': 'CGInfo-Vercel-Sync',
+      'Accept': 'application/vnd.github.v3+json'
+    };
+
+    const getRes = await fetch(fileUrl, { headers });
+    if (!getRes.ok) return;
+    const fileData = await getRes.json();
+    const sha = fileData.sha;
+    const contentStr = Buffer.from(fileData.content, 'base64').toString('utf-8');
+    const dados = JSON.parse(contentStr);
+
+    const antes = (dados.aprovacoes || []).length;
+    dados.aprovacoes = (dados.aprovacoes || []).filter(a => 
+      !setTokens.has(String(a.token).toLowerCase()) && !setTokens.has(String(a.numeroOs).toLowerCase())
+    );
+
+    if (dados.aprovacoes.length !== antes) {
+      dados.ultimaAtualizacao = new Date().toISOString();
+      const novoConteudoB64 = Buffer.from(JSON.stringify(dados, null, 2)).toString('base64');
+      await fetch(fileUrl, {
+        method: 'PUT',
+        headers,
+        body: JSON.stringify({
+          message: `Reparo Pro sincronizou e confirmou aprovacoes [skip ci]`,
+          content: novoConteudoB64,
+          sha: sha || undefined
+        })
+      });
+    }
+  } catch (errGh) {}
+}
+
 function getDbJsonPath() {
   const candidates = [
     'C:\\ReparoPro\\data\\db.json',
@@ -487,6 +524,8 @@ app.post('/api/aprovacoes-confirmadas', (req, res) => {
         fs.writeFileSync(APROVACOES_PATH, JSON.stringify(d, null, 2), 'utf-8');
       } catch (e) {}
     }
+
+    persistirAprovacoesConfirmadasGitHub(setTokens).catch(() => {});
   }
 
   res.json({ success: true, restantes: filaAprovacoesMemoria.length });

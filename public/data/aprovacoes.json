@@ -1,20 +1,5 @@
 {
-  "ultimaVerificacao": "2026-10-29T15:58:00.000Z",
-  "aprovacoes": [
-    {
-      "token": "TNQR501004",
-      "numeroOs": "1004",
-      "nomeCliente": "Marcos Oliveira",
-      "status": "APROVADO",
-      "data": "2026-10-30T11:58:20.899Z"
-    },
-    {
-      "token": "CG1003C",
-      "numeroOs": "1003",
-      "nomeCliente": "Roberto Alcantara",
-      "status": "APROVADO",
-      "data": "2026-10-30T12:14:26.755Z"
-    }
-  ],
-  "ultimaAtualizacao": "2026-10-30T12:14:27.379Z"
+  "ultimaVerificacao": "2026-10-30T12:30:00.000Z",
+  "aprovacoes": [],
+  "ultimaAtualizacao": "2026-10-30T12:30:00.000Z"
 }
