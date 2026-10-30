@@ -10,15 +10,15 @@
     "garantiaPadrao": "Garantia legal de 90 (noventa) dias para o serviço executado e peças substituídas, contados a partir da data de entrega, conforme artigo 26 do Código de Defesa do Consumidor (Lei 8.078/90). A garantia não cobre danos por mau uso, umidade, quedas ou violação do lacre."
   },
   "totalOrdens": 6,
-  "ultimaAtualizacao": "2026-10-30T20:25:58.731Z",
+  "ultimaAtualizacao": "2026-10-30T20:29:20.849Z",
   "ordens": [
     {
       "id": "OS-538",
       "numeroOs": 538,
       "token": "83AIWF538",
-      "status": "AGUARDANDO_APROVACAO",
+      "status": "EM_REPARO",
       "createdAt": "2026-10-20T17:54:51.761Z",
-      "updatedAt": "2026-10-30T19:07:52.892Z",
+      "updatedAt": "2026-10-30T20:29:05.470Z",
       "previsaoEntrega": "2026-10-20",
       "defeitoRelatado": "limpeza",
       "laudoTecnico": "",
@@ -48,7 +48,7 @@
         "estado": "RJ",
         "garantiaPadrao": "Garantia legal de 90 (noventa) dias para o serviço executado e peças substituídas, contados a partir da data de entrega, conforme artigo 26 do Código de Defesa do Consumidor (Lei 8.078/90). A garantia não cobre danos por mau uso, umidade, quedas ou violação do lacre."
       },
-      "sincronizadoEm": "2026-10-30T20:25:58.731Z"
+      "sincronizadoEm": "2026-10-30T20:29:20.849Z"
     },
     {
       "id": "OS-1005",
@@ -93,7 +93,7 @@
         "estado": "RJ",
         "garantiaPadrao": "Garantia legal de 90 (noventa) dias para o serviço executado e peças substituídas, contados a partir da data de entrega, conforme artigo 26 do Código de Defesa do Consumidor (Lei 8.078/90). A garantia não cobre danos por mau uso, umidade, quedas ou violação do lacre."
       },
-      "sincronizadoEm": "2026-10-30T20:25:58.731Z"
+      "sincronizadoEm": "2026-10-30T20:29:20.849Z"
     },
     {
       "id": "OS-1004",
@@ -138,7 +138,7 @@
         "estado": "RJ",
         "garantiaPadrao": "Garantia legal de 90 (noventa) dias para o serviço executado e peças substituídas, contados a partir da data de entrega, conforme artigo 26 do Código de Defesa do Consumidor (Lei 8.078/90). A garantia não cobre danos por mau uso, umidade, quedas ou violação do lacre."
       },
-      "sincronizadoEm": "2026-10-30T20:25:58.731Z"
+      "sincronizadoEm": "2026-10-30T20:29:20.849Z"
     },
     {
       "id": "OS-1001",
@@ -189,7 +189,7 @@
         "estado": "RJ",
         "garantiaPadrao": "Garantia legal de 90 (noventa) dias para o serviço executado e peças substituídas, contados a partir da data de entrega, conforme artigo 26 do Código de Defesa do Consumidor (Lei 8.078/90). A garantia não cobre danos por mau uso, umidade, quedas ou violação do lacre."
       },
-      "sincronizadoEm": "2026-10-30T20:25:58.731Z"
+      "sincronizadoEm": "2026-10-30T20:29:20.849Z"
     },
     {
       "id": "OS-1002",
@@ -240,7 +240,7 @@
         "estado": "RJ",
         "garantiaPadrao": "Garantia legal de 90 (noventa) dias para o serviço executado e peças substituídas, contados a partir da data de entrega, conforme artigo 26 do Código de Defesa do Consumidor (Lei 8.078/90). A garantia não cobre danos por mau uso, umidade, quedas ou violação do lacre."
       },
-      "sincronizadoEm": "2026-10-30T20:25:58.731Z"
+      "sincronizadoEm": "2026-10-30T20:29:20.849Z"
     },
     {
       "id": "OS-1003",
@@ -285,7 +285,7 @@
         "estado": "RJ",
         "garantiaPadrao": "Garantia legal de 90 (noventa) dias para o serviço executado e peças substituídas, contados a partir da data de entrega, conforme artigo 26 do Código de Defesa do Consumidor (Lei 8.078/90). A garantia não cobre danos por mau uso, umidade, quedas ou violação do lacre."
       },
-      "sincronizadoEm": "2026-10-30T20:25:58.731Z"
+      "sincronizadoEm": "2026-10-30T20:29:20.849Z"
     }
   ]
 }
