@@ -1,4 +1,13 @@
 {
   "ultimaVerificacao": "2026-10-29T15:58:00.000Z",
-  "aprovacoes": []
+  "aprovacoes": [
+    {
+      "token": "TNQR501004",
+      "numeroOs": "1004",
+      "nomeCliente": "Marcos Oliveira",
+      "status": "APROVADO",
+      "data": "2026-10-30T11:58:20.899Z"
+    }
+  ],
+  "ultimaAtualizacao": "2026-10-30T11:58:31.762Z"
 }
